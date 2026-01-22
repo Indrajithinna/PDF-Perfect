@@ -8,6 +8,9 @@ import SplitPDF from './pages/SplitPDF';
 import CompressPDF from './pages/CompressPDF';
 import ConvertToPDF from './pages/ConvertToPDF';
 import PDFToImages from './pages/PDFToImages';
+import PasswordProtect from './pages/PasswordProtect';
+import WatermarkPDF from './pages/WatermarkPDF';
+import PageOrganizer from './pages/PageOrganizer';
 
 const App: React.FC = () => {
     return (
@@ -22,6 +25,9 @@ const App: React.FC = () => {
                         <Route path="/compress" element={<CompressPDF />} />
                         <Route path="/convert" element={<ConvertToPDF />} />
                         <Route path="/pdf-to-images" element={<PDFToImages />} />
+                        <Route path="/password-protect" element={<PasswordProtect />} />
+                        <Route path="/watermark" element={<WatermarkPDF />} />
+                        <Route path="/page-organizer" element={<PageOrganizer />} />
                     </Routes>
                 </main>
                 <Footer />
