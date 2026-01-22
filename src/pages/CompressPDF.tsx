@@ -46,7 +46,7 @@ const CompressPDF: React.FC = () => {
 
             setCompressedSize(pdfBytes.length);
 
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
@@ -127,8 +127,8 @@ const CompressPDF: React.FC = () => {
                                     <button
                                         onClick={() => setCompressionLevel('low')}
                                         className={`p-4 rounded-lg border-2 transition-all ${compressionLevel === 'low'
-                                                ? 'border-blue-500 bg-blue-50'
-                                                : 'border-gray-200 hover:border-blue-300'
+                                            ? 'border-blue-500 bg-blue-50'
+                                            : 'border-gray-200 hover:border-blue-300'
                                             }`}
                                     >
                                         <Minimize2 className="w-6 h-6 text-blue-600 mx-auto mb-2" />
@@ -138,8 +138,8 @@ const CompressPDF: React.FC = () => {
                                     <button
                                         onClick={() => setCompressionLevel('medium')}
                                         className={`p-4 rounded-lg border-2 transition-all ${compressionLevel === 'medium'
-                                                ? 'border-purple-500 bg-purple-50'
-                                                : 'border-gray-200 hover:border-purple-300'
+                                            ? 'border-purple-500 bg-purple-50'
+                                            : 'border-gray-200 hover:border-purple-300'
                                             }`}
                                     >
                                         <Minimize2 className="w-6 h-6 text-purple-600 mx-auto mb-2" />
@@ -149,8 +149,8 @@ const CompressPDF: React.FC = () => {
                                     <button
                                         onClick={() => setCompressionLevel('high')}
                                         className={`p-4 rounded-lg border-2 transition-all ${compressionLevel === 'high'
-                                                ? 'border-pink-500 bg-pink-50'
-                                                : 'border-gray-200 hover:border-pink-300'
+                                            ? 'border-pink-500 bg-pink-50'
+                                            : 'border-gray-200 hover:border-pink-300'
                                             }`}
                                     >
                                         <Minimize2 className="w-6 h-6 text-pink-600 mx-auto mb-2" />

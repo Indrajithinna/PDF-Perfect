@@ -58,7 +58,7 @@ const PDFToImages: React.FC = () => {
                 const pdfBytes = await singlePagePdf.save();
 
                 // Create blob URL for the single page
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
                 const url = URL.createObjectURL(blob);
 
                 // Create iframe to render PDF
@@ -173,8 +173,8 @@ const PDFToImages: React.FC = () => {
                                     <button
                                         onClick={() => setImageFormat('png')}
                                         className={`p-4 rounded-lg border-2 transition-all ${imageFormat === 'png'
-                                                ? 'border-purple-500 bg-purple-50'
-                                                : 'border-gray-200 hover:border-purple-300'
+                                            ? 'border-purple-500 bg-purple-50'
+                                            : 'border-gray-200 hover:border-purple-300'
                                             }`}
                                     >
                                         <ImageIcon className="w-6 h-6 text-purple-600 mx-auto mb-2" />
@@ -184,8 +184,8 @@ const PDFToImages: React.FC = () => {
                                     <button
                                         onClick={() => setImageFormat('jpeg')}
                                         className={`p-4 rounded-lg border-2 transition-all ${imageFormat === 'jpeg'
-                                                ? 'border-purple-500 bg-purple-50'
-                                                : 'border-gray-200 hover:border-purple-300'
+                                            ? 'border-purple-500 bg-purple-50'
+                                            : 'border-gray-200 hover:border-purple-300'
                                             }`}
                                     >
                                         <ImageIcon className="w-6 h-6 text-purple-600 mx-auto mb-2" />

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { PDFDocument, rgb } from 'pdf-lib';
+import { PDFDocument } from 'pdf-lib';
 import { jsPDF } from 'jspdf';
 import mammoth from 'mammoth';
 import { Download, Upload, FileInput } from 'lucide-react';
@@ -71,7 +71,7 @@ const ConvertToPDF: React.FC = () => {
             }
 
             const pdfBytes = await pdfDoc.save();
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
@@ -161,8 +161,8 @@ const ConvertToPDF: React.FC = () => {
                                     setFiles([]);
                                 }}
                                 className={`p-4 rounded-lg border-2 transition-all ${conversionType === 'image'
-                                        ? 'border-purple-500 bg-purple-50'
-                                        : 'border-gray-200 hover:border-purple-300'
+                                    ? 'border-purple-500 bg-purple-50'
+                                    : 'border-gray-200 hover:border-purple-300'
                                     }`}
                             >
                                 <FileInput className="w-6 h-6 text-purple-600 mx-auto mb-2" />
@@ -175,8 +175,8 @@ const ConvertToPDF: React.FC = () => {
                                     setFiles([]);
                                 }}
                                 className={`p-4 rounded-lg border-2 transition-all ${conversionType === 'document'
-                                        ? 'border-purple-500 bg-purple-50'
-                                        : 'border-gray-200 hover:border-purple-300'
+                                    ? 'border-purple-500 bg-purple-50'
+                                    : 'border-gray-200 hover:border-purple-300'
                                     }`}
                             >
                                 <FileInput className="w-6 h-6 text-purple-600 mx-auto mb-2" />

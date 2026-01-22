@@ -51,7 +51,7 @@ const SplitPDF: React.FC = () => {
                 pages.forEach(page => newPdf.addPage(page));
 
                 const pdfBytes = await newPdf.save();
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
                 link.href = url;
@@ -66,7 +66,7 @@ const SplitPDF: React.FC = () => {
                     newPdf.addPage(page);
 
                     const pdfBytes = await newPdf.save();
-                    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                    const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = url;
@@ -139,8 +139,8 @@ const SplitPDF: React.FC = () => {
                                     <button
                                         onClick={() => setSplitMode('range')}
                                         className={`p-4 rounded-lg border-2 transition-all ${splitMode === 'range'
-                                                ? 'border-purple-500 bg-purple-50'
-                                                : 'border-gray-200 hover:border-purple-300'
+                                            ? 'border-purple-500 bg-purple-50'
+                                            : 'border-gray-200 hover:border-purple-300'
                                             }`}
                                     >
                                         <Scissors className="w-6 h-6 text-purple-600 mx-auto mb-2" />
@@ -150,8 +150,8 @@ const SplitPDF: React.FC = () => {
                                     <button
                                         onClick={() => setSplitMode('individual')}
                                         className={`p-4 rounded-lg border-2 transition-all ${splitMode === 'individual'
-                                                ? 'border-purple-500 bg-purple-50'
-                                                : 'border-gray-200 hover:border-purple-300'
+                                            ? 'border-purple-500 bg-purple-50'
+                                            : 'border-gray-200 hover:border-purple-300'
                                             }`}
                                     >
                                         <Scissors className="w-6 h-6 text-purple-600 mx-auto mb-2" />
