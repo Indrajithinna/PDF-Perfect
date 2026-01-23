@@ -8,6 +8,7 @@ import SplitPDF from './pages/SplitPDF';
 import CompressPDF from './pages/CompressPDF';
 import ConvertToPDF from './pages/ConvertToPDF';
 import PDFToImages from './pages/PDFToImages';
+import SignPDF from './pages/SignPDF';
 import PasswordProtect from './pages/PasswordProtect';
 import WatermarkPDF from './pages/WatermarkPDF';
 import PageOrganizer from './pages/PageOrganizer';
@@ -28,7 +29,7 @@ const App: React.FC = () => {
                         <Route path="/password-protect" element={<PasswordProtect />} />
                         <Route path="/watermark" element={<WatermarkPDF />} />
                         <Route path="/page-organizer" element={<PageOrganizer />} />
-                        <Route path="/sign" element={<div>Sign PDF (Coming Soon)</div>} />
+                        <Route path="/sign" element={<SignPDF />} />
                         <Route path="/page-numbers" element={<div>Page Numbers (Coming Soon)</div>} />
                         <Route path="/unlock" element={<div>Unlock PDF (Coming Soon)</div>} />
                         <Route path="/metadata" element={<div>Edit Metadata (Coming Soon)</div>} />
