@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FileText, Menu, X, Shield } from 'lucide-react';
+import { FileText, Menu, X, Shield, Moon, Sun } from 'lucide-react';
 
 const Header: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isDark, setIsDark] = useState(false);
     const location = useLocation();
+
+    React.useEffect(() => {
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [isDark]);
 
     const navLinks = [
         { path: '/', label: 'Home' },
@@ -18,14 +27,14 @@ const Header: React.FC = () => {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
-            <nav className="glass-card container mx-auto px-6 py-3 flex items-center justify-between">
+            <nav className="glass-card container mx-auto px-6 py-3 flex items-center justify-between dark:bg-slate-900/80 dark:border-slate-700">
                 {/* Logo */}
                 <Link to="/" className="flex items-center space-x-3 group">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300">
                         <FileText className="w-6 h-6" />
                     </div>
                     <div>
-                        <h1 className="text-xl font-bold text-gray-900 tracking-tight">PDF Perfect</h1>
+                        <h1 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">PDF Perfect</h1>
                     </div>
                 </Link>
 
@@ -36,8 +45,8 @@ const Header: React.FC = () => {
                             key={link.path}
                             to={link.path}
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive(link.path)
-                                    ? 'text-violet-700 bg-violet-50'
-                                    : 'text-gray-600 hover:text-violet-600 hover:bg-white/50'
+                                    ? 'text-violet-700 bg-violet-50 dark:bg-violet-900/30 dark:text-violet-300'
+                                    : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-300 hover:bg-white/50 dark:hover:bg-slate-800'
                                 }`}
                         >
                             {link.label}
@@ -47,21 +56,28 @@ const Header: React.FC = () => {
 
                 {/* Right Side */}
                 <div className="flex items-center space-x-4">
-                    <div className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-emerald-50/80 border border-emerald-100 rounded-lg backdrop-blur-sm">
-                        <Shield className="w-4 h-4 text-emerald-600" />
-                        <span className="text-xs font-bold text-emerald-700 uppercase tracking-wide">Secure</span>
+                    <button
+                        onClick={() => setIsDark(!isDark)}
+                        className="p-2 rounded-lg text-gray-500 hover:text-violet-600 hover:bg-violet-50 dark:text-gray-400 dark:hover:text-violet-300 dark:hover:bg-slate-800 transition-colors"
+                    >
+                        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                    </button>
+
+                    <div className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-emerald-50/80 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-800 rounded-lg backdrop-blur-sm">
+                        <Shield className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                        <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wide">Secure</span>
                     </div>
 
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                        className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
                         aria-label="Toggle menu"
                     >
                         {mobileMenuOpen ? (
-                            <X className="w-6 h-6 text-gray-700" />
+                            <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                         ) : (
-                            <Menu className="w-6 h-6 text-gray-700" />
+                            <Menu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                         )}
                     </button>
                 </div>
@@ -75,8 +91,8 @@ const Header: React.FC = () => {
                                 to={link.path}
                                 onClick={() => setMobileMenuOpen(false)}
                                 className={`px-4 py-3 rounded-xl font-medium transition-colors ${isActive(link.path)
-                                        ? 'bg-violet-50 text-violet-700'
-                                        : 'text-gray-600 hover:bg-gray-50'
+                                    ? 'bg-violet-50 text-violet-700'
+                                    : 'text-gray-600 hover:bg-gray-50'
                                     }`}
                             >
                                 {link.label}

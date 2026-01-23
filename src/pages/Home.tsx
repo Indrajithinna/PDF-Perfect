@@ -13,8 +13,15 @@ import {
     Lock,
     Rocket,
     Droplet,
+    CheckCircle2,
     Move,
-    CheckCircle2
+    PenTool,
+    Hash,
+    Unlock,
+    FileText as FileTextIcon,
+    Type,
+    Layers,
+    ScanText
 } from 'lucide-react';
 
 interface ToolCardProps {
@@ -31,8 +38,8 @@ const ToolCard: React.FC<ToolCardProps> = ({ icon, title, description, link, ico
             <div className={`tool-card-icon ${iconColor} bg-opacity-10`}>
                 {React.cloneElement(icon as React.ReactElement, { className: `w-7 h-7 ${iconColor.replace('bg-', 'text-')}` })}
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-violet-700 transition-colors">{title}</h3>
-            <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-violet-700 dark:group-hover:text-violet-400 transition-colors">{title}</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{description}</p>
         </Link>
     );
 };
@@ -82,6 +89,13 @@ const Home: React.FC = () => {
             iconColor: 'bg-rose-600'
         },
         {
+            icon: <Unlock />,
+            title: 'Unlock PDF',
+            description: 'Remove passwords and restrictions from your PDF files.',
+            link: '/unlock',
+            iconColor: 'bg-red-500'
+        },
+        {
             icon: <Droplet />,
             title: 'Add Watermark',
             description: 'Stamp text or image watermarks over your PDF pages.',
@@ -94,6 +108,48 @@ const Home: React.FC = () => {
             description: 'Sort, rotate, and delete pages visually.',
             link: '/page-organizer',
             iconColor: 'bg-orange-600'
+        },
+        {
+            icon: <PenTool />,
+            title: 'Sign PDF',
+            description: 'Add your signature to PDF documents easily.',
+            link: '/sign',
+            iconColor: 'bg-blue-600'
+        },
+        {
+            icon: <Hash />,
+            title: 'Page Numbers',
+            description: 'Add page numbers to your document with custom formatting.',
+            link: '/page-numbers',
+            iconColor: 'bg-teal-600'
+        },
+        {
+            icon: <FileTextIcon />,
+            title: 'Edit Metadata',
+            description: 'Modify title, author, subject, and keywords metadata.',
+            link: '/metadata',
+            iconColor: 'bg-purple-600'
+        },
+        {
+            icon: <Layers />,
+            title: 'Flatten PDF',
+            description: 'Make fillable forms uneditable and merge layers.',
+            link: '/flatten',
+            iconColor: 'bg-slate-600'
+        },
+        {
+            icon: <Type />,
+            title: 'PDF to Text',
+            description: 'Extract raw text content from PDF documents.',
+            link: '/pdf-to-text',
+            iconColor: 'bg-gray-600'
+        },
+        {
+            icon: <ScanText />,
+            title: 'OCR PDF',
+            description: 'Recognize text in scanned documents and images.',
+            link: '/ocr',
+            iconColor: 'bg-yellow-600'
         }
     ];
 

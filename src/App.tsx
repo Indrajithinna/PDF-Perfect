@@ -28,6 +28,13 @@ const App: React.FC = () => {
                         <Route path="/password-protect" element={<PasswordProtect />} />
                         <Route path="/watermark" element={<WatermarkPDF />} />
                         <Route path="/page-organizer" element={<PageOrganizer />} />
+                        <Route path="/sign" element={<div>Sign PDF (Coming Soon)</div>} />
+                        <Route path="/page-numbers" element={<div>Page Numbers (Coming Soon)</div>} />
+                        <Route path="/unlock" element={<div>Unlock PDF (Coming Soon)</div>} />
+                        <Route path="/metadata" element={<div>Edit Metadata (Coming Soon)</div>} />
+                        <Route path="/flatten" element={<div>Flatten PDF (Coming Soon)</div>} />
+                        <Route path="/pdf-to-text" element={<div>PDF to Text (Coming Soon)</div>} />
+                        <Route path="/ocr" element={<div>OCR (Coming Soon)</div>} />
                     </Routes>
                 </main>
                 <Footer />
