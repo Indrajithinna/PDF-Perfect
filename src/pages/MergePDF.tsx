@@ -75,7 +75,7 @@ const MergePDF: React.FC = () => {
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-8 fade-in">
                     <h1 className="text-4xl font-bold gradient-text mb-4">Merge PDF Files</h1>
-                    <p className="text-white text-lg">
+                    <p className="text-gray-600 text-lg">
                         Combine multiple PDF documents into one file
                     </p>
                 </div>

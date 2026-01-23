@@ -17,83 +17,71 @@ const Header: React.FC = () => {
     const isActive = (path: string) => location.pathname === path;
 
     return (
-        <header className="glass-card mx-4 mt-4 mb-8 sticky top-4 z-50 shimmer">
-            <nav className="container mx-auto px-6 py-4">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <Link to="/" className="flex items-center space-x-3 group">
-                        <div className="p-2 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                            <FileText className="w-8 h-8 text-white" />
-                        </div>
-                        <div>
-                            <h1 className="text-2xl font-bold gradient-text">PDF Perfect</h1>
-                            <p className="text-xs text-gray-600 font-medium">Free Offline PDF Tools</p>
-                        </div>
-                    </Link>
-
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-2">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                className={`relative px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${isActive(link.path)
-                                        ? 'text-purple-600 bg-purple-50'
-                                        : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
-                                    }`}
-                            >
-                                {link.label}
-                                {isActive(link.path) && (
-                                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full"></span>
-                                )}
-                            </Link>
-                        ))}
+        <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+            <nav className="glass-card container mx-auto px-6 py-3 flex items-center justify-between">
+                {/* Logo */}
+                <Link to="/" className="flex items-center space-x-3 group">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300">
+                        <FileText className="w-6 h-6" />
                     </div>
+                    <div>
+                        <h1 className="text-xl font-bold text-gray-900 tracking-tight">PDF Perfect</h1>
+                    </div>
+                </Link>
 
-                    {/* Right Side */}
-                    <div className="flex items-center space-x-4">
-                        <div className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-full">
-                            <Shield className="w-4 h-4 text-green-600" />
-                            <span className="text-sm font-bold text-green-700">100% Private</span>
-                        </div>
-
-                        {/* Mobile Menu Button */}
-                        <button
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="md:hidden p-2 rounded-lg hover:bg-purple-50 transition-colors"
-                            aria-label="Toggle menu"
+                {/* Desktop Navigation */}
+                <div className="hidden md:flex items-center space-x-1">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.path}
+                            to={link.path}
+                            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive(link.path)
+                                    ? 'text-violet-700 bg-violet-50'
+                                    : 'text-gray-600 hover:text-violet-600 hover:bg-white/50'
+                                }`}
                         >
-                            {mobileMenuOpen ? (
-                                <X className="w-6 h-6 text-gray-700" />
-                            ) : (
-                                <Menu className="w-6 h-6 text-gray-700" />
-                            )}
-                        </button>
+                            {link.label}
+                        </Link>
+                    ))}
+                </div>
+
+                {/* Right Side */}
+                <div className="flex items-center space-x-4">
+                    <div className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-emerald-50/80 border border-emerald-100 rounded-lg backdrop-blur-sm">
+                        <Shield className="w-4 h-4 text-emerald-600" />
+                        <span className="text-xs font-bold text-emerald-700 uppercase tracking-wide">Secure</span>
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        {mobileMenuOpen ? (
+                            <X className="w-6 h-6 text-gray-700" />
+                        ) : (
+                            <Menu className="w-6 h-6 text-gray-700" />
+                        )}
+                    </button>
                 </div>
 
                 {/* Mobile Menu */}
                 {mobileMenuOpen && (
-                    <div className="md:hidden mt-4 pt-4 border-t border-gray-200 fade-in">
-                        <div className="flex flex-col space-y-2">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.path}
-                                    to={link.path}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`px-4 py-3 rounded-lg font-semibold transition-all duration-300 ${isActive(link.path)
-                                            ? 'text-purple-600 bg-purple-50'
-                                            : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
-                                        }`}
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                            <div className="flex sm:hidden items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg mt-2">
-                                <Shield className="w-4 h-4 text-green-600" />
-                                <span className="text-sm font-bold text-green-700">100% Private</span>
-                            </div>
-                        </div>
+                    <div className="absolute top-full left-0 right-0 mt-2 mx-4 p-4 glass-card md:hidden flex flex-col space-y-2 animate-fade-in">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.path}
+                                to={link.path}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className={`px-4 py-3 rounded-xl font-medium transition-colors ${isActive(link.path)
+                                        ? 'bg-violet-50 text-violet-700'
+                                        : 'text-gray-600 hover:bg-gray-50'
+                                    }`}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                     </div>
                 )}
             </nav>
