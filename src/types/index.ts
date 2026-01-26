@@ -8,6 +8,7 @@ export interface PDFFile {
     name: string;
     size: number;
     pageCount?: number;
+    previewUrl?: string;
 }
 
 export interface ProcessingOptions {
