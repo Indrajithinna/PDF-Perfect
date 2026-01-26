@@ -95,6 +95,7 @@ PDF Perfect features a modern, premium design with:
 - ✅ **No Server Uploads** - Your files never leave your device
 - ✅ **Works Offline** - After initial load, no internet required
 - ✅ **No Data Collection** - We don't track or store any information
+- ✅ **No Cookies** - We don't use any tracking cookies
 - ✅ **Open Source** - Fully transparent codebase
 
 ## 📖 Usage
