@@ -95,3 +95,15 @@ export const calculateCompressionRatio = (originalSize: number, compressedSize: 
 export const sanitizeFilename = (filename: string): string => {
     return filename.replace(/[^a-z0-9.-]/gi, '_').toLowerCase();
 };
+
+/**
+ * Read file as Data URL (base64)
+ */
+export const readFileAsDataURL = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+};
