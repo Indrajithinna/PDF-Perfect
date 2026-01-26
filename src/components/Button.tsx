@@ -11,6 +11,7 @@ interface ButtonProps {
     icon?: React.ReactNode;
     type?: 'button' | 'submit' | 'reset';
     className?: string;
+    title?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
     icon,
     type = 'button',
     className = '',
+    title,
 }) => {
     const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
@@ -48,6 +50,7 @@ const Button: React.FC<ButtonProps> = ({
             type={type}
             onClick={onClick}
             disabled={disabled || loading}
+            title={title}
             className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyle} ${disabledStyle} ${className}`}
         >
             {loading ? (
