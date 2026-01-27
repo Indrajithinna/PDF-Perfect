@@ -1,9 +1,21 @@
 import { Job } from 'bullmq';
 import { downloadFile, uploadFile } from '../utils/storage';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, rgb, degrees } from 'pdf-lib';
+
+type OperationParams = {
+    text?: string;
+    imageKey?: string;
+    // Common
+    fontSize?: number;
+    opacity?: number;
+    rotation?: number;
+    // ... other params
+    type?: 'text' | 'image';
+    tiled?: boolean;
+}
 
 export const pdfProcessor = async (job: Job) => {
-    const { key, operation, params } = job.data;
+    const { key, operation, params } = job.data as { key: string, operation: string, params: OperationParams };
 
     await job.updateProgress(10);
 
@@ -12,16 +24,26 @@ export const pdfProcessor = async (job: Job) => {
     const fileBuffer = await downloadFile(key);
     await job.updateProgress(30);
 
-    // 2. Process File
-    console.log(`Processing job ${job.id}: Operation ${operation}`);
+    // 2. Load PDF
     const pdfDoc = await PDFDocument.load(fileBuffer);
 
-    // Example Operation: Watermark (just as a placeholder for logic)
-    if (operation === 'watermark' && params?.text) {
-        const pages = pdfDoc.getPages();
-        const { width, height } = pages[0].getSize();
-        // Draw text would be here, skipping detail to keep it generic
-        // In real implementation we would use pdf-lib drawText
+    // 3. Delegate Operation
+    console.log(`Processing job ${job.id}: Operation ${operation}`);
+
+    switch (operation) {
+        case 'watermark':
+            await handleWatermark(pdfDoc, params);
+            break;
+        case 'merge':
+            // Placeholder
+            await job.log('Merge operation not implemented');
+            break;
+        case 'split':
+            // Placeholder
+            await job.log('Split operation not implemented');
+            break;
+        default:
+            throw new Error(`Unknown operation: ${operation}`);
     }
 
     // Save document
@@ -37,3 +59,33 @@ export const pdfProcessor = async (job: Job) => {
 
     return { key: resultKey };
 };
+
+async function handleWatermark(pdfDoc: PDFDocument, params: OperationParams) {
+    const pages = pdfDoc.getPages();
+    const {
+        text,
+        type = 'text',
+        fontSize = 48,
+        opacity = 0.3,
+        rotation = 45,
+        tiled = false
+    } = params;
+
+    if (type === 'text' && text) {
+        for (const page of pages) {
+            const { width, height } = page.getSize();
+            // Simplify logic for backend demo: center text
+            page.drawText(text, {
+                x: width / 2 - (text.length * fontSize) / 4,
+                y: height / 2,
+                size: fontSize,
+                opacity: opacity,
+                rotate: degrees(rotation),
+                color: rgb(0.5, 0.5, 0.5) // Gray
+            });
+        }
+    } else if (type === 'image' && params.imageKey) {
+        // Handle image download and embedding would go here
+        console.log("Image watermark requested but simplified for this demo");
+    }
+}
