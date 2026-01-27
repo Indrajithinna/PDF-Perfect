@@ -53,6 +53,15 @@ server.register(async function (fastify) {
     });
 });
 
+import { healthRoutes } from './routes/health';
+
+// ... imports
+
+server.register(async function (fastify) {
+    // ... websocket logic
+});
+
+server.register(healthRoutes, { prefix: '/api' });
 server.register(uploadRoutes, { prefix: '/api' });
 server.register(statusRoutes, { prefix: '/api' });
 

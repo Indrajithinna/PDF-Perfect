@@ -71,10 +71,4 @@ Security updates will be released as soon as possible after a vulnerability is c
 - Release notes
 - Project README updates
 
-## Contact
-
-For any security-related questions or concerns, please contact:
-- Email: security@pdfperfect.com
-- GitHub: Create a private security advisory
-
 Thank you for helping keep PDF Perfect and our users safe!
