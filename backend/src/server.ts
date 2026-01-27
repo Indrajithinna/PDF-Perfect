@@ -15,6 +15,19 @@ server.register(cors, {
     origin: '*', // Adjust for production
 });
 
+server.setErrorHandler((error, request, reply) => {
+    server.log.error(error);
+
+    const statusCode = error.statusCode || 500;
+    reply.status(statusCode).send({
+        error: {
+            message: error.message || 'Internal Server Error',
+            statusCode,
+            code: error.code
+        }
+    });
+});
+
 server.register(multipart, {
     limits: {
         fileSize: 50 * 1024 * 1024 // 50MB
