@@ -76,107 +76,73 @@ const WatermarkPDF: React.FC = () => {
 
         setIsProcessing(true);
         try {
-            const arrayBuffer = await pdfFile.arrayBuffer();
-            const pdfDoc = await PDFDocument.load(arrayBuffer);
-            const pages = pdfDoc.getPages();
-            const rgbColor = hexToRgb(color);
-
-            if (watermarkType === 'text') {
-                for (const page of pages) {
-                    const { width, height } = page.getSize();
-                    const textWidth = watermarkText.length * fontSize * 0.6;
-                    const textHeight = fontSize;
-
-                    if (tiled) {
-                        // Add tiled watermark
-                        const xSpacing = 200;
-                        const ySpacing = 150;
-                        for (let x = 0; x < width; x += xSpacing) {
-                            for (let y = 0; y < height; y += ySpacing) {
-                                page.drawText(watermarkText, {
-                                    x,
-                                    y,
-                                    size: fontSize,
-                                    color: rgb(rgbColor.r, rgbColor.g, rgbColor.b),
-                                    opacity: opacity,
-                                    rotate: degrees(rotation),
-                                });
-                            }
-                        }
-                    } else {
-                        // Add single watermark
-                        const pos = getPosition(width, height, textWidth, textHeight);
-                        page.drawText(watermarkText, {
-                            x: pos.x,
-                            y: pos.y,
-                            size: fontSize,
-                            color: rgb(rgbColor.r, rgbColor.g, rgbColor.b),
-                            opacity: opacity,
-                            rotate: degrees(rotation),
-                        });
-                    }
-                }
-            } else if (watermarkType === 'image' && watermarkImage) {
-                const imageBytes = await watermarkImage.arrayBuffer();
-                let image;
-
-                if (watermarkImage.type === 'image/png') {
-                    image = await pdfDoc.embedPng(imageBytes);
-                } else if (watermarkImage.type === 'image/jpeg' || watermarkImage.type === 'image/jpg') {
-                    image = await pdfDoc.embedJpg(imageBytes);
-                } else {
-                    throw new Error('Unsupported image format. Please use PNG or JPG.');
-                }
-
-                const imageDims = image.scale(0.5);
-
-                for (const page of pages) {
-                    const { width, height } = page.getSize();
-
-                    if (tiled) {
-                        const xSpacing = imageDims.width + 100;
-                        const ySpacing = imageDims.height + 100;
-                        for (let x = 0; x < width; x += xSpacing) {
-                            for (let y = 0; y < height; y += ySpacing) {
-                                page.drawImage(image, {
-                                    x,
-                                    y,
-                                    width: imageDims.width,
-                                    height: imageDims.height,
-                                    opacity: opacity,
-                                    rotate: degrees(rotation),
-                                });
-                            }
-                        }
-                    } else {
-                        const pos = getPosition(width, height, imageDims.width, imageDims.height);
-                        page.drawImage(image, {
-                            x: pos.x,
-                            y: pos.y,
-                            width: imageDims.width,
-                            height: imageDims.height,
-                            opacity: opacity,
-                            rotate: degrees(rotation),
-                        });
-                    }
-                }
+            // Prepare Form Data
+            const formData = new FormData();
+            formData.append('file', pdfFile);
+            if (watermarkType === 'image' && watermarkImage) {
+                formData.append('image', watermarkImage);
             }
 
-            const pdfBytes = await pdfDoc.save();
-            const blob = new Blob([pdfBytes as BlobPart], { type: 'application/pdf' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = `watermarked-${pdfFile.name}`;
-            link.click();
-            URL.revokeObjectURL(url);
+            const params = {
+                type: watermarkType,
+                text: watermarkText,
+                fontSize,
+                opacity,
+                rotation,
+                position,
+                color,
+                tiled
+            };
+            formData.append('params', JSON.stringify(params));
+            formData.append('operation', 'watermark');
 
-            alert('Watermark added successfully!');
-            setPdfFile(null);
+            // 1. Upload to Backend
+            // Assuming NGINX is on port 8080 locally
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+
+            const uploadRes = await fetch(`${API_URL}/upload`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!uploadRes.ok) {
+                throw new Error('Upload failed');
+            }
+
+            const { jobId } = await uploadRes.json();
+
+            // 2. Poll for Completion
+            // We'll poll every 1 second
+            const checkStatus = async () => {
+                const statusRes = await fetch(`${API_URL}/status/${jobId}`);
+                const status = await statusRes.json();
+
+                if (status.state === 'completed') {
+                    // 3. Download
+                    const link = document.createElement('a');
+                    link.href = status.downloadUrl;
+                    link.download = `watermarked-${pdfFile.name}`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    setIsProcessing(false);
+                    alert('Watermark added successfully!');
+                    setPdfFile(null);
+                } else if (status.state === 'failed') {
+                    setIsProcessing(false);
+                    alert('Processing failed. Please try again.');
+                } else {
+                    // Continue polling
+                    setTimeout(checkStatus, 1000);
+                }
+            };
+
+            checkStatus();
+
         } catch (error) {
             console.error('Error adding watermark:', error);
             alert('Error adding watermark. Please try again.');
-        } finally {
             setIsProcessing(false);
         }
     };

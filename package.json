@@ -42,5 +42,18 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^7.3.1"
-  }
+  },
+  "description": "![PDF Perfect](https://img.shields.io/badge/PDF-Perfect-purple?style=for-the-badge)\r ![React](https://img.shields.io/badge/React-18.3-blue?style=for-the-badge&logo=react)\r ![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=for-the-badge&logo=typescript)\r ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indrajithinna/PDF-Perfect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Indrajithinna/PDF-Perfect/issues"
+  },
+  "homepage": "https://github.com/Indrajithinna/PDF-Perfect#readme"
 }
