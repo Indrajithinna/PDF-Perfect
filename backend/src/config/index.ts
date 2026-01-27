@@ -1,19 +1,34 @@
 import dotenv from 'dotenv';
+import { z } from 'zod';
 
 dotenv.config();
 
+const envSchema = z.object({
+    PORT: z.string().default('3000').transform(Number),
+    REDIS_HOST: z.string().default('localhost'),
+    REDIS_PORT: z.string().default('6379').transform(Number),
+    S3_ENDPOINT: z.string().default('http://localhost:9000'),
+    S3_REGION: z.string().default('us-east-1'),
+    S3_ACCESS_KEY: z.string().default('minioadmin'),
+    S3_SECRET_KEY: z.string().default('minioadmin'),
+    S3_BUCKET: z.string().default('pdf-storage'),
+    JWT_SECRET: z.string().default('super-secret-jwt-key'),
+});
+
+const env = envSchema.parse(process.env);
+
 export const config = {
-    port: parseInt(process.env.PORT || '3000', 10),
+    port: env.PORT,
     redis: {
-        host: process.env.REDIS_HOST || 'localhost',
-        port: parseInt(process.env.REDIS_PORT || '6379', 10),
+        host: env.REDIS_HOST,
+        port: env.REDIS_PORT,
     },
     s3: {
-        endpoint: process.env.S3_ENDPOINT || 'http://localhost:9000',
-        region: process.env.S3_REGION || 'us-east-1',
-        accessKeyId: process.env.S3_ACCESS_KEY || 'minioadmin',
-        secretAccessKey: process.env.S3_SECRET_KEY || 'minioadmin',
-        bucket: process.env.S3_BUCKET || 'pdf-storage',
+        endpoint: env.S3_ENDPOINT,
+        region: env.S3_REGION,
+        accessKeyId: env.S3_ACCESS_KEY,
+        secretAccessKey: env.S3_SECRET_KEY,
+        bucket: env.S3_BUCKET,
     },
-    jwtSecret: process.env.JWT_SECRET || 'super-secret-jwt-key',
+    jwtSecret: env.JWT_SECRET,
 };
