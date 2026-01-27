@@ -17,7 +17,7 @@ We take the security of PDF Perfect seriously. If you believe you have found a s
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to: [security@pdfperfect.com](mailto:security@pdfperfect.com)
+Instead, please report them via email to:(mailto:indrajithinna@.com)
 
 You should receive a response within 48 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
 
@@ -70,5 +70,11 @@ Security updates will be released as soon as possible after a vulnerability is c
 - GitHub Security Advisories
 - Release notes
 - Project README updates
+
+## Contact
+
+For any security-related questions or concerns, please contact:
+- Email: indrajithinna@gmail.com
+- GitHub: Create a private security advisory
 
 Thank you for helping keep PDF Perfect and our users safe!
