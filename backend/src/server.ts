@@ -78,10 +78,24 @@ server.register(healthRoutes, { prefix: '/api' });
 server.register(uploadRoutes, { prefix: '/api' });
 server.register(statusRoutes, { prefix: '/api' });
 
-server.listen({ port: config.port, host: '0.0.0.0' }, (err, address) => {
-    if (err) {
-        console.error(err);
+// Graceful shutdown
+const closeGracefully = async (signal: string) => {
+    console.log(`Received ${signal}. Closing server...`);
+    await server.close();
+    process.exit(0);
+};
+
+process.on('SIGINT', () => closeGracefully('SIGINT'));
+process.on('SIGTERM', () => closeGracefully('SIGTERM'));
+
+const start = async () => {
+    try {
+        await server.listen({ port: config.port, host: '0.0.0.0' });
+        console.log(`Server listening at http://0.0.0.0:${config.port}`);
+    } catch (err) {
+        server.log.error(err);
         process.exit(1);
     }
-    console.log(`Server listening at ${address}`);
-});
+};
+
+start();
