@@ -65,6 +65,14 @@ We love new ideas! To suggest a feature:
    - Reference any related issues
    - Wait for review and address feedback
 
+## Project Structure
+
+- `src/components`: Reusable UI components
+- `src/pages`: Main application pages/routes
+- `src/utils`: Helper functions and utilities
+- `src/types`: TypeScript type definitions
+- `src/hooks`: Custom React hooks
+
 ## Development Setup
 
 1. **Install dependencies**
