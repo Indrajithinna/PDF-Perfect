@@ -7,19 +7,32 @@ interface PDFFile {
     file: File;
     id: string;
 }
+import { formatFileSize, validateFileSize } from '../utils/fileUtils';
 
 const MergePDF: React.FC = () => {
     const [pdfFiles, setPdfFiles] = useState<PDFFile[]>([]);
     const [isProcessing, setIsProcessing] = useState(false);
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
-        const newFiles = acceptedFiles
-            .filter(file => file.type === 'application/pdf')
-            .map(file => ({
-                file,
-                id: Math.random().toString(36).substr(2, 9)
-            }));
-        setPdfFiles(prev => [...prev, ...newFiles]);
+        const validFiles: PDFFile[] = [];
+        const MAX_SIZE_MB = 100;
+
+        acceptedFiles.forEach(file => {
+            if (file.type === 'application/pdf') {
+                if (validateFileSize(file, MAX_SIZE_MB)) {
+                    validFiles.push({
+                        file,
+                        id: Math.random().toString(36).substr(2, 9)
+                    });
+                } else {
+                    alert(`File ${file.name} exceeds the ${MAX_SIZE_MB}MB limit.`);
+                }
+            }
+        });
+
+        if (validFiles.length > 0) {
+            setPdfFiles(prev => [...prev, ...validFiles]);
+        }
     }, []);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
