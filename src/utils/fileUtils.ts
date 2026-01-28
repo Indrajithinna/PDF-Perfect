@@ -14,6 +14,16 @@ export const formatFileSize = (bytes: number): string => {
 };
 
 /**
+ * Validate file size
+ * @param file File to check
+ * @param maxSizeMB Maximum size in MB
+ */
+export const validateFileSize = (file: File, maxSizeMB: number): boolean => {
+    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+    return file.size <= maxSizeBytes;
+};
+
+/**
  * Validate if file is a valid PDF
  */
 export const isValidPDF = (file: File): boolean => {
