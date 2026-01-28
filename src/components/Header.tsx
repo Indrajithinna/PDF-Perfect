@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
             <nav className="glass-card container mx-auto px-6 py-3 flex items-center justify-between dark:bg-slate-900/80 dark:border-slate-700">
                 {/* Logo */}
-                <Link to="/" className="flex items-center space-x-3 group">
+                <Link to="/" className="flex items-center space-x-3 group" title="Return to Home">
                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300">
                         <FileText className="w-6 h-6" />
                     </div>
@@ -45,8 +45,8 @@ const Header: React.FC = () => {
                             key={link.path}
                             to={link.path}
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive(link.path)
-                                    ? 'text-violet-700 bg-violet-50 dark:bg-violet-900/30 dark:text-violet-300'
-                                    : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-300 hover:bg-white/50 dark:hover:bg-slate-800'
+                                ? 'text-violet-700 bg-violet-50 dark:bg-violet-900/30 dark:text-violet-300'
+                                : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-300 hover:bg-white/50 dark:hover:bg-slate-800'
                                 }`}
                         >
                             {link.label}
