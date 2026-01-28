@@ -64,7 +64,8 @@ const Footer: React.FC = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-purple-50 hover:to-indigo-50 border border-gray-200 hover:border-purple-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="GitHub"
+                                aria-label="Visit our GitHub"
+                                title="Visit our GitHub"
                             >
                                 <Github className="w-5 h-5 text-gray-700 group-hover:text-purple-600 transition-colors" />
                             </a>
@@ -73,7 +74,8 @@ const Footer: React.FC = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-blue-50 hover:to-cyan-50 border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="Twitter"
+                                aria-label="Follow us on Twitter"
+                                title="Follow us on Twitter"
                             >
                                 <Twitter className="w-5 h-5 text-gray-700 group-hover:text-blue-600 transition-colors" />
                             </a>
@@ -82,14 +84,16 @@ const Footer: React.FC = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-blue-50 hover:to-indigo-50 border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="LinkedIn"
+                                aria-label="Connect on LinkedIn"
+                                title="Connect on LinkedIn"
                             >
                                 <Linkedin className="w-5 h-5 text-gray-700 group-hover:text-blue-700 transition-colors" />
                             </a>
                             <a
                                 href="mailto:contact@pdfperfect.com"
                                 className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-green-50 hover:to-emerald-50 border border-gray-200 hover:border-green-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="Email"
+                                aria-label="Send us an email"
+                                title="Send us an email"
                             >
                                 <Mail className="w-5 h-5 text-gray-700 group-hover:text-green-600 transition-colors" />
                             </a>
