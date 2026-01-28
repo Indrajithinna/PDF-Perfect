@@ -50,4 +50,15 @@ const Loading: React.FC<LoadingProps> = ({
     return content;
 };
 
+export const Spinner = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) => {
+    const sizeClasses = {
+        sm: 'w-8 h-8',
+        md: 'w-12 h-12',
+        lg: 'w-16 h-16',
+    };
+    return (
+        <div className={`${sizeClasses[size]} rounded-full border-4 border-purple-200 border-t-purple-600 animate-spin`}></div>
+    );
+};
+
 export default Loading;
