@@ -1,4 +1,8 @@
-import { formatFileSize, validateFileSize } from '../utils/fileUtils';
+import React, { useState, useCallback } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { PDFDocument } from 'pdf-lib';
+import { Download, Upload, Scissors } from 'lucide-react';
+import { validateFileSize } from '../utils/fileUtils';
 
 const SplitPDF: React.FC = () => {
     const [pdfFile, setPdfFile] = useState<File | null>(null);
