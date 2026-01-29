@@ -6,44 +6,32 @@ import ReactSignatureCanvas from 'react-signature-canvas';
 import Draggable from 'react-draggable';
 import { Download, Upload, PenTool, Image as ImageIcon, Type, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
+import { validateFileSize } from '../utils/fileUtils';
+
+// ... (other imports)
+
 // Configure PDF.js worker
 // Using CDN for simplicity and reliability in this context
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
 
 interface SignatureElement {
-    id: string;
-    type: 'draw' | 'image' | 'text';
-    content: string; // dataURL for images/drawings, text for text
-    x: number;
-    y: number;
-    page: number;
-    width: number;
-    height: number;
+    // ...
 }
 
 const SignPDF: React.FC = () => {
-    const [pdfFile, setPdfFile] = useState<File | null>(null);
-    const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
-    const [scale, setScale] = useState(1.0);
-    const [elements, setElements] = useState<SignatureElement[]>([]);
-    const [isProcessing, setIsProcessing] = useState(false);
-
-    // Modal states
-    const [showDrawModal, setShowDrawModal] = useState(false);
-    const [showTypeModal, setShowTypeModal] = useState(false);
-    const [textInput, setTextInput] = useState('');
-
-    // Refs
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const sigPadRef = useRef<ReactSignatureCanvas>(null);
+    // ... (state)
 
     // Initial PDF Load
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
+        const MAX_SIZE_MB = 100;
+
         if (file && file.type === 'application/pdf') {
+            if (!validateFileSize(file, MAX_SIZE_MB)) {
+                alert(`File ${file.name} exceeds the ${MAX_SIZE_MB}MB limit.`);
+                return;
+            }
+
             setPdfFile(file);
             const arrayBuffer = await file.arrayBuffer();
             const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
