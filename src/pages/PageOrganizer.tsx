@@ -3,6 +3,7 @@ import { PDFDocument, degrees } from 'pdf-lib';
 import { Download, RotateCw, Trash2, Copy, Plus, Move } from 'lucide-react';
 import Button from '../components/Button';
 import FileUploader from '../components/FileUploader';
+import { validateFileSize } from '../utils/fileUtils';
 
 interface PageInfo {
     id: string;
@@ -20,6 +21,14 @@ const PageOrganizer: React.FC = () => {
 
     const handleFilesSelected = (files: File[]) => {
         if (files.length > 0) {
+            const file = files[0];
+            const MAX_SIZE_MB = 100;
+
+            if (!validateFileSize(file, MAX_SIZE_MB)) {
+                alert(`File ${file.name} exceeds the ${MAX_SIZE_MB}MB limit.`);
+                return;
+            }
+
             setPdfFile(files[0]);
             loadPDFPages(files[0]);
         }

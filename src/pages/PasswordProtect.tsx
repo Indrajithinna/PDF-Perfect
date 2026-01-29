@@ -6,7 +6,22 @@ import FileUploader from '../components/FileUploader';
 import { validateFileSize } from '../utils/fileUtils';
 
 const PasswordProtect: React.FC = () => {
-    // ...
+    const [pdfFile, setPdfFile] = useState<File | null>(null);
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [mode, setMode] = useState<'protect' | 'remove'>('protect');
+    const [userPassword, setUserPassword] = useState('');
+    const [ownerPassword, setOwnerPassword] = useState('');
+    const [removePassword, setRemovePassword] = useState('');
+    const [showUserPassword, setShowUserPassword] = useState(false);
+    const [showOwnerPassword, setShowOwnerPassword] = useState(false);
+    const [showRemovePassword, setShowRemovePassword] = useState(false);
+    const [permissions, setPermissions] = useState({
+        printing: true,
+        modifying: false,
+        copying: false,
+        annotating: true,
+    });
+
     const handleFilesSelected = (files: File[]) => {
         if (files.length > 0) {
             const file = files[0];
