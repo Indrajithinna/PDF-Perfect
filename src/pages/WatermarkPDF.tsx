@@ -46,26 +46,7 @@ const WatermarkPDF: React.FC = () => {
         }
     };
 
-    const hexToRgb = (hex: string) => {
-        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? {
-            r: parseInt(result[1], 16) / 255,
-            g: parseInt(result[2], 16) / 255,
-            b: parseInt(result[3], 16) / 255
-        } : { r: 1, g: 0, b: 0 };
-    };
 
-    const getPosition = (pageWidth: number, pageHeight: number, textWidth: number, textHeight: number) => {
-        const positions = {
-            'center': { x: (pageWidth - textWidth) / 2, y: (pageHeight - textHeight) / 2 },
-            'top-left': { x: 50, y: pageHeight - textHeight - 50 },
-            'top-right': { x: pageWidth - textWidth - 50, y: pageHeight - textHeight - 50 },
-            'bottom-left': { x: 50, y: 50 },
-            'bottom-right': { x: pageWidth - textWidth - 50, y: 50 },
-            'custom': { x: pageWidth / 2, y: pageHeight / 2 }
-        };
-        return positions[position];
-    };
 
     const addWatermark = async () => {
         if (!pdfFile) {
