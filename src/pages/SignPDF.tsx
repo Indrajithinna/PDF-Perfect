@@ -19,7 +19,23 @@ interface SignatureElement {
 }
 
 const SignPDF: React.FC = () => {
-    // ... (state)
+    const [pdfFile, setPdfFile] = useState<File | null>(null);
+    const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const [scale, setScale] = useState(1.0);
+    const [elements, setElements] = useState<SignatureElement[]>([]);
+    const [isProcessing, setIsProcessing] = useState(false);
+
+    // Modal states
+    const [showDrawModal, setShowDrawModal] = useState(false);
+    const [showTypeModal, setShowTypeModal] = useState(false);
+    const [textInput, setTextInput] = useState('');
+
+    // Refs
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const sigPadRef = useRef<ReactSignatureCanvas>(null);
 
     // Initial PDF Load
     const onDrop = useCallback(async (acceptedFiles: File[]) => {

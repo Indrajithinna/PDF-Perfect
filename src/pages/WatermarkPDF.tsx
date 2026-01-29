@@ -3,6 +3,7 @@ import { PDFDocument, rgb, degrees } from 'pdf-lib';
 import { Download, Droplet, Type, Image as ImageIcon, RotateCw } from 'lucide-react';
 import Button from '../components/Button';
 import FileUploader from '../components/FileUploader';
+import { validateFileSize } from '../utils/fileUtils';
 
 type WatermarkType = 'text' | 'image';
 type Position = 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'custom';
@@ -23,6 +24,14 @@ const WatermarkPDF: React.FC = () => {
 
     const handleFilesSelected = (files: File[]) => {
         if (files.length > 0) {
+            const file = files[0];
+            const MAX_SIZE_MB = 100;
+
+            if (!validateFileSize(file, MAX_SIZE_MB)) {
+                alert(`File ${file.name} exceeds the ${MAX_SIZE_MB}MB limit.`);
+                return;
+            }
+
             setPdfFile(files[0]);
         }
     };
