@@ -5,13 +5,23 @@ import { jsPDF } from 'jspdf';
 import mammoth from 'mammoth';
 import { Download, Upload, FileInput } from 'lucide-react';
 
+import { validateFileSize } from '../utils/fileUtils';
+
 const ConvertToPDF: React.FC = () => {
     const [files, setFiles] = useState<File[]>([]);
     const [isProcessing, setIsProcessing] = useState(false);
     const [conversionType, setConversionType] = useState<'image' | 'document'>('image');
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
-        setFiles(acceptedFiles);
+        const MAX_SIZE_MB = 100;
+        const validFiles = acceptedFiles.filter(file => {
+            if (!validateFileSize(file, MAX_SIZE_MB)) {
+                alert(`File ${file.name} exceeds the ${MAX_SIZE_MB}MB limit.`);
+                return false;
+            }
+            return true;
+        });
+        setFiles(validFiles);
     }, []);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
