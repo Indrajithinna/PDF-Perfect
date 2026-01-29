@@ -1,7 +1,4 @@
-import React, { useState, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { PDFDocument } from 'pdf-lib';
-import { Download, Upload, Scissors } from 'lucide-react';
+import { formatFileSize, validateFileSize } from '../utils/fileUtils';
 
 const SplitPDF: React.FC = () => {
     const [pdfFile, setPdfFile] = useState<File | null>(null);
@@ -13,7 +10,14 @@ const SplitPDF: React.FC = () => {
 
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
+        const MAX_SIZE_MB = 100;
+
         if (file && file.type === 'application/pdf') {
+            if (!validateFileSize(file, MAX_SIZE_MB)) {
+                alert(`File ${file.name} exceeds the ${MAX_SIZE_MB}MB limit.`);
+                return;
+            }
+
             setPdfFile(file);
 
             // Get page count
