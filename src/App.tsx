@@ -12,10 +12,13 @@ import SignPDF from './pages/SignPDF';
 import PasswordProtect from './pages/PasswordProtect';
 import WatermarkPDF from './pages/WatermarkPDF';
 import PageOrganizer from './pages/PageOrganizer';
+import ScrollToTop from './components/ScrollToTop';
+import NotFound from './pages/NotFound';
 
 const App: React.FC = () => {
     return (
         <Router>
+            <ScrollToTop />
             <div className="min-h-screen flex flex-col">
                 <Header />
                 <main className="flex-grow">
@@ -36,6 +39,7 @@ const App: React.FC = () => {
                         <Route path="/flatten" element={<div>Flatten PDF (Coming Soon)</div>} />
                         <Route path="/pdf-to-text" element={<div>PDF to Text (Coming Soon)</div>} />
                         <Route path="/ocr" element={<div>OCR (Coming Soon)</div>} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>
                 <Footer />
