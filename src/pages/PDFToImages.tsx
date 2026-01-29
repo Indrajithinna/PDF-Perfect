@@ -6,6 +6,8 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { Download, Upload, Image as ImageIcon } from 'lucide-react';
 
+import { validateFileSize } from '../utils/fileUtils';
+
 const PDFToImages: React.FC = () => {
     const [pdfFile, setPdfFile] = useState<File | null>(null);
     const [pageCount, setPageCount] = useState<number>(0);
@@ -15,7 +17,14 @@ const PDFToImages: React.FC = () => {
 
     const onDrop = useCallback(async (acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
+        const MAX_SIZE_MB = 100;
+
         if (file && file.type === 'application/pdf') {
+            if (!validateFileSize(file, MAX_SIZE_MB)) {
+                alert(`File ${file.name} exceeds the ${MAX_SIZE_MB}MB limit.`);
+                return;
+            }
+
             setPdfFile(file);
 
             const arrayBuffer = await file.arrayBuffer();
