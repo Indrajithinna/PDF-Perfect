@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { Upload, File, X, CheckCircle2 } from 'lucide-react';
+import { Upload, File, X, CheckCircle2, Shield } from 'lucide-react';
 
 interface FileUploaderProps {
     onFilesSelected: (files: File[]) => void;
@@ -98,6 +98,12 @@ const FileUploader: React.FC<FileUploaderProps> = ({
                         ))}
                     </div>
                 )}
+
+                {/* Trust Badge */}
+                <div className="mt-6 flex items-center justify-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200 text-green-700 w-fit mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <Shield className="w-5 h-5" />
+                    <span className="text-sm font-medium">Files stay on your device. 0% Server Upload.</span>
+                </div>
             </div>
 
             {selectedFiles.length > 0 && (

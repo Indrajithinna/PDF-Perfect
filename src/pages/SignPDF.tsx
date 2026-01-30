@@ -148,8 +148,8 @@ const SignPDF: React.FC = () => {
         const img = new Image();
         img.onload = () => {
             // reasonable default size based on type
-            let width = 150;
-            let height = (img.height / img.width) * width;
+            const width = 150;
+            const height = (img.height / img.width) * width;
 
             setElements(prev => [...prev, {
                 id: Math.random().toString(36).substr(2, 9),
