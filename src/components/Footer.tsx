@@ -49,6 +49,12 @@ const Footer: React.FC = () => {
                                     Contact
                                 </a>
                             </li>
+                            <li>
+                                <a href="https://github.com/Indrajithinna/PDF-Perfect/issues" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-purple-600 transition-colors flex items-center group">
+                                    <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                                    Report a Bug
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
