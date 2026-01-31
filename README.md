@@ -1,43 +1,75 @@
-# PDF Perfect 🎯
+# PDF Perfect
 
-![PDF Perfect](https://img.shields.io/badge/PDF-Perfect-purple?style=for-the-badge)
-![Fastify](https://img.shields.io/badge/Fastify-Backend-black?style=for-the-badge&logo=fastify)
-![React](https://img.shields.io/badge/React-18.3-blue?style=for-the-badge&logo=react)
-![Redis](https://img.shields.io/badge/Redis-Queue-red?style=for-the-badge&logo=redis)
-![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker)
+![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?logo=vercel&style=for-the-badge)
+![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?logo=pwa&style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-**Enterprise-grade Scalable PDF Processing SaaS.**
+**A professional, privacy-first PDF manipulation suite running entirely in your browser.**
 
-PDF Perfect has been upgraded to a robust full-stack architecture capable of handling 10,000+ RPS. It now features a distributed backend, background job processing, and cloud storage integration.
+[**View Live Demo**](https://pdf-perfect.vercel.app/)
 
-## ✨ New Architecture
+---
 
-- **Backend**: Fastify Connect (Node.js) for high-performance API.
-- **Queue System**: BullMQ + Redis for reliable background job processing and scalability.
-- **Storage**: S3-compatible object storage (MinIO locally, AWS S3 via config).
-- **Load Balancing**: NGINX configured for horizontal scaling.
-- **Worker Nodes**: Dedicated microservices for CPU-intensive PDF operations.
+## 🧐 The Problem
+Traditional online PDF tools operate on a **Server-Side** model. When you merge or compress a PDF, you are forced to upload your sensitive files (bank statements, legal contracts, medical records) to a remote server. This creates significant security and privacy risks:
+- ❌ **Data Exposure:** Your files leave your device.
+- ❌ **Latency:** Large files take time to upload and download.
+- ❌ **Reliability:** Requires a stable internet connection.
 
-## ✨ Features
+## 🛡️ The Solution: Zero-Knowledge Architecture
+**PDF Perfect** fundamentally shifts this paradigm by moving the computational workload from the server to the **Client (Browser)**. By leveraging modern Web APIs and WebAssembly (WASM), all PDF operations—merging, splitting, compressing, and even OCR—occur locally on your device.
 
-- **Merge PDF**: Combine multiple files into one.
-- **Split PDF**: Extract specific pages or split documents.
-- **Compress PDF**: Reduce file size while maintaining quality.
-- **Convert to PDF**: Support for Word, Excel, PowerPoint, and Images.
-- **PDF to Images**: Convert PDF pages to high-quality images.
-- **Security**: Password protect and Unlock PDFs.
-- **Edit & Organize**: Add watermarks, page numbers, rotate/delete pages, and edit metadata.
-- **Advanced Tools**: Flatten forms, Extract text, and OCR scanning.
-- **Signature**: Sign PDFs digitally.
+Your files **never** leave your computer.
 
-## 🚀 Deployment
+### Architecture Comparison
 
-### Prerequisites
+```mermaid
+graph TD
+    subgraph "Legacy PDF Tools"
+    User1[User Device] -->|Upload File ⚠️| Server[Remote Server]
+    Server -->|Process File| Server
+    Server -->|Download File| User1
+    end
 
-- Docker & Docker Compose
-- Node.js 18+ (for local development)
+    subgraph "PDF Perfect"
+    User2[User Device] <-->|⚡ Process Locally| Browser[Browser Engine (WASM)]
+    User2 -.->|No Network Request| Cloud[Cloud Server]
+    end
+```
 
-### Quick Start (Docker)
+## ✨ Key Features
+
+- **🔒 Privacy First & Zero-Knowledge**
+  Built on a "Local-First" philosophy. Since no files are uploaded, we cannot see, store, or share your data. It is physically impossible for us to leak your documents.
+
+- **⚡ Zero Latency Performance**
+   Eliminates the "Upload → Process → Download" round trip. Modifications happen instantly, leveraging your device's multi-core processor for operations like OCR and image compression.
+
+- **📱 Progressive Web App (PWA)**
+  Install PDF Perfect as a native application on Windows, macOS, iOS, and Android. It feels and performs like a native desktop app.
+
+- **🛠 Offline Capable**
+  Thanks to Service Workers and intelligent caching, PDF Perfect works simply without an internet connection. Perfect for working on the go or in air-gapped environments.
+
+- **📂 Comprehensive Suite**
+  - **Organization:** Merge, Split, Rotate, Remove Pages, Sort.
+  - **Optimization:** Compress PDF, Convert to Images.
+  - **Security:** Password Protect, Unlock, Add Watermarks.
+  - **Advanced:** OCR (Optical Character Recognition), PDF to Text, Metadata Editing.
+
+## 💻 Tech Stack
+
+- **Frontend Framework:** React 18
+- **Build Tool:** Vite
+- **Language:** TypeScript
+- **PDF Core:** `pdf-lib` (Document modification), `pdf.js` (Rendering & Text)
+- **OCR Engine:** `tesseract.js` (WASM-based local OCR)
+- **UI/UX:** Tailwind CSS, Lucide React, Framer Motion
+- **PWA:** Vite PWA Plugin
+
+## 🚀 Local Development
+
+To run PDF Perfect locally for development or contribution:
 
 1. **Clone the repository**
    ```bash
@@ -45,76 +77,17 @@ PDF Perfect has been upgraded to a robust full-stack architecture capable of han
    cd PDF-Perfect
    ```
 
-2. **Start the stack**
+2. **Install Dependencies**
    ```bash
-   docker-compose up --build -d
-   ```
-
-   This will spin up:
-   - **Nginx** (Load Balancer): http://localhost:8080
-   - **API Services** (Replicas: 3): Internal port 3000
-   - **Worker Services** (Replicas: 2): Background processing
-   - **Redis**: Queue storage
-   - **MinIO**: S3 Storage (Console: http://localhost:9001)
-
-3. **Verify Status**
-   ```bash
-   docker-compose ps
-   ```
-
-### Local Development
-
-If you want to run services individually without Docker (not recommended for full stack testing):
-
-1. **Start Redis & MinIO** (using Docker is easiest for infra)
-   ```bash
-   docker-compose up -d redis minio createbuckets
-   ```
-
-2. **Start Backend**
-   ```bash
-   cd backend
    npm install
+   ```
+
+3. **Start Development Server**
+   ```bash
    npm run dev
    ```
+   Access the app at `http://localhost:5173`
 
-3. **Start Worker**
-   ```bash
-   cd worker
-   npm install
-   npm run dev
-   ```
+---
 
-4. **Start Frontend**
-   ```bash
-   # From root
-   npm install
-   npm run dev
-   ```
-
-## 🛠️ API Endpoints
-
-- `POST /api/upload`: Upload PDF and image assets. Triggers a background job.
-- `GET /api/status/:jobId`: Poll job status. Returns progress and download URL when complete.
-- `WS /ws/status/:jobId`: Real-time WebSocket status updates.
-
-## 🧪 Stress Testing
-
-We provide an `autocannon` script to verify performance targets.
-
-```bash
-npm install -g autocannon
-autocannon -c 100 -d 10 http://localhost:8080
-```
-
-To test the full upload flow under load, use the custom script provided in `scripts/stress-test.js`.
-
-## 🔒 Security
-
-- Basic JWT Authentication (Configurable)
-- Rate Limiting enabled (Fastify Rate Limit)
-- S3 Presigned URLs for secure file access
-
-## 📝 License
-
-MIT License
+*Engineered with precision. Built for privacy.*
