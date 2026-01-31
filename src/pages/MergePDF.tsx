@@ -123,7 +123,7 @@ const MergePDF: React.FC = () => {
                                         <span className="font-semibold text-purple-600">#{index + 1}</span>
                                         <span className="text-gray-700">{pdfFile.file.name}</span>
                                         <span className="text-sm text-gray-500">
-                                            ({(pdfFile.file.size / 1024).toFixed(1)} KB)
+                                            ({formatFileSize(pdfFile.file.size)})
                                         </span>
                                     </div>
                                     <button

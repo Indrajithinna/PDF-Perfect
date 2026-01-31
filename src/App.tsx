@@ -12,6 +12,12 @@ import SignPDF from './pages/SignPDF';
 import PasswordProtect from './pages/PasswordProtect';
 import WatermarkPDF from './pages/WatermarkPDF';
 import PageOrganizer from './pages/PageOrganizer';
+import UnlockPDF from './pages/UnlockPDF';
+import PageNumbers from './pages/PageNumbers';
+import EditMetadata from './pages/EditMetadata';
+import FlattenPDF from './pages/FlattenPDF';
+import PDFToText from './pages/PDFToText';
+import OCRPDF from './pages/OCRPDF';
 import ScrollToTop from './components/ScrollToTop';
 import NotFound from './pages/NotFound';
 
@@ -21,7 +27,7 @@ const App: React.FC = () => {
             <ScrollToTop />
             <div className="min-h-screen flex flex-col">
                 <Header />
-                <main className="flex-grow">
+                <main className="flex-grow pt-28">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/merge" element={<MergePDF />} />
@@ -33,12 +39,12 @@ const App: React.FC = () => {
                         <Route path="/watermark" element={<WatermarkPDF />} />
                         <Route path="/page-organizer" element={<PageOrganizer />} />
                         <Route path="/sign" element={<SignPDF />} />
-                        <Route path="/page-numbers" element={<div>Page Numbers (Coming Soon)</div>} />
-                        <Route path="/unlock" element={<div>Unlock PDF (Coming Soon)</div>} />
-                        <Route path="/metadata" element={<div>Edit Metadata (Coming Soon)</div>} />
-                        <Route path="/flatten" element={<div>Flatten PDF (Coming Soon)</div>} />
-                        <Route path="/pdf-to-text" element={<div>PDF to Text (Coming Soon)</div>} />
-                        <Route path="/ocr" element={<div>OCR (Coming Soon)</div>} />
+                        <Route path="/page-numbers" element={<PageNumbers />} />
+                        <Route path="/unlock" element={<UnlockPDF />} />
+                        <Route path="/metadata" element={<EditMetadata />} />
+                        <Route path="/flatten" element={<FlattenPDF />} />
+                        <Route path="/pdf-to-text" element={<PDFToText />} />
+                        <Route path="/ocr" element={<OCRPDF />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>

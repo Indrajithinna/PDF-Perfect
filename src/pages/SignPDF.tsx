@@ -12,13 +12,23 @@ import { validateFileSize } from '../utils/fileUtils';
 
 // Configure PDF.js worker
 // Using CDN for simplicity and reliability in this context
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
-
 interface SignatureElement {
-    // ...
+    id: string;
+    type: 'draw' | 'image' | 'text';
+    content: string;
+    x: number;
+    y: number;
+    page: number;
+    width: number;
+    height: number;
 }
 
 const SignPDF: React.FC = () => {
+    useEffect(() => {
+        // Configure PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+    }, []);
+
     const [pdfFile, setPdfFile] = useState<File | null>(null);
     const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -93,6 +103,7 @@ const SignPDF: React.FC = () => {
                     canvasContext: context,
                     viewport: viewport,
                 };
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 await page.render(renderContext as any).promise;
             }
         };

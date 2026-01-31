@@ -67,8 +67,7 @@ async function handleWatermark(pdfDoc: PDFDocument, params: OperationParams) {
         type = 'text',
         fontSize = 48,
         opacity = 0.3,
-        rotation = 45,
-        tiled = false
+        rotation = 45
     } = params;
 
     if (type === 'text' && text) {

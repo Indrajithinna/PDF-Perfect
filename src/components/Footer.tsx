@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Heart, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Github, Heart, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
@@ -54,48 +54,31 @@ const Footer: React.FC = () => {
 
                     {/* Connect Section */}
                     <div>
-                        <h4 className="font-bold text-gray-800 mb-4 text-lg">Connect With Us</h4>
+                        <h4 className="font-bold text-gray-800 mb-4 text-lg">Contact Us</h4>
                         <p className="text-gray-600 text-sm mb-4">
-                            Follow us on social media for updates and tips
+                            Have any complaints or suggestions for improvement? Reach out to us below.
                         </p>
-                        <div className="flex space-x-3">
+                        <div className="flex flex-col space-y-3">
                             <a
-                                href="https://github.com"
+                                href="https://github.com/Indrajithinna"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-purple-50 hover:to-indigo-50 border border-gray-200 hover:border-purple-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="Visit our GitHub"
-                                title="Visit our GitHub"
+                                className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-purple-50 border border-gray-100 hover:border-purple-200 transition-all duration-300 group"
                             >
-                                <Github className="w-5 h-5 text-gray-700 group-hover:text-purple-600 transition-colors" />
+                                <div className="p-2 bg-white rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                    <Github className="w-5 h-5 text-gray-700 group-hover:text-purple-600" />
+                                </div>
+                                <span className="text-gray-600 font-medium group-hover:text-purple-700">Indrajithinna</span>
                             </a>
+
                             <a
-                                href="https://twitter.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-blue-50 hover:to-cyan-50 border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="Follow us on Twitter"
-                                title="Follow us on Twitter"
+                                href="mailto:indrajithinna@gmail.com"
+                                className="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-green-50 border border-gray-100 hover:border-green-200 transition-all duration-300 group"
                             >
-                                <Twitter className="w-5 h-5 text-gray-700 group-hover:text-blue-600 transition-colors" />
-                            </a>
-                            <a
-                                href="https://linkedin.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-blue-50 hover:to-indigo-50 border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="Connect on LinkedIn"
-                                title="Connect on LinkedIn"
-                            >
-                                <Linkedin className="w-5 h-5 text-gray-700 group-hover:text-blue-700 transition-colors" />
-                            </a>
-                            <a
-                                href="mailto:contact@pdfperfect.com"
-                                className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl hover:from-green-50 hover:to-emerald-50 border border-gray-200 hover:border-green-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 group"
-                                aria-label="Send us an email"
-                                title="Send us an email"
-                            >
-                                <Mail className="w-5 h-5 text-gray-700 group-hover:text-green-600 transition-colors" />
+                                <div className="p-2 bg-white rounded-lg shadow-sm group-hover:scale-110 transition-transform">
+                                    <Mail className="w-5 h-5 text-gray-700 group-hover:text-green-600" />
+                                </div>
+                                <span className="text-gray-600 font-medium group-hover:text-green-700">indrajithinna@gmail.com</span>
                             </a>
                         </div>
                     </div>

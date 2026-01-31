@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { PDFDocument, rgb, degrees } from 'pdf-lib';
+
 import { Download, Droplet, Type, Image as ImageIcon, RotateCw } from 'lucide-react';
 import Button from '../components/Button';
 import FileUploader from '../components/FileUploader';
@@ -7,6 +7,16 @@ import { validateFileSize } from '../utils/fileUtils';
 
 type WatermarkType = 'text' | 'image';
 type Position = 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'custom';
+
+interface UploadResponse {
+    jobId: string;
+}
+
+interface StatusResponse {
+    state: 'processing' | 'completed' | 'failed';
+    downloadUrl: string;
+    error?: string;
+}
 
 const WatermarkPDF: React.FC = () => {
     const [pdfFile, setPdfFile] = useState<File | null>(null);
@@ -99,13 +109,13 @@ const WatermarkPDF: React.FC = () => {
                 throw new Error('Upload failed');
             }
 
-            const { jobId } = await uploadRes.json();
+            const { jobId } = (await uploadRes.json()) as UploadResponse;
 
             // 2. Poll for Completion
             // We'll poll every 1 second
             const checkStatus = async () => {
                 const statusRes = await fetch(`${API_URL}/status/${jobId}`);
-                const status = await statusRes.json();
+                const status = (await statusRes.json()) as StatusResponse;
 
                 if (status.state === 'completed') {
                     // 3. Download
