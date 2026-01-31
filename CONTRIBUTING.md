@@ -1,128 +1,44 @@
 # Contributing to PDF Perfect
 
-Thank you for your interest in contributing to PDF Perfect! We welcome contributions from the community.
+We love your input! We want to make contributing to PDF Perfect as easy and transparent as possible, whether it's:
 
-## How to Contribute
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Becoming a maintainer
 
-### Reporting Bugs
+## We Use [Github Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
 
-If you find a bug, please create an issue with:
-- A clear, descriptive title
-- Steps to reproduce the issue
-- Expected behavior
-- Actual behavior
-- Screenshots (if applicable)
-- Browser and OS information
+Pull requests are the best way to propose changes to the codebase (we use [Github Flow](https://guides.github.com/introduction/flow/index.html)). We actively welcome your pull requests:
 
-### Suggesting Features
+1. Fork the repo and create your branch from `main`.
+2. If you've added code that should be tested, add tests.
+3. If you've changed APIs, update the documentation.
+4. Ensure the test suite passes.
+5. Make sure your code lints.
+6. Issue that pull request!
 
-We love new ideas! To suggest a feature:
-- Check if the feature has already been requested
-- Create an issue with a clear description
-- Explain why this feature would be useful
-- Provide examples of how it would work
+## Any contributions you make will be under the MIT Software License
 
-### Pull Requests
+In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
 
-1. **Fork the repository**
-   ```bash
-   git clone https://github.com/Indrajithinna/PDF-Perfect.git
-   cd PDF-Perfect
-   ```
+## Report bugs using Github's [issues](https://github.com/Indrajithinna/PDF-Perfect/issues)
 
-2. **Create a branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](); it's that easy!
 
-3. **Make your changes**
-   - Follow the existing code style
-   - Write clear, concise commit messages
-   - Add comments for complex logic
-   - Test your changes thoroughly
+## Write bug reports with detail, background, and sample code
 
-4. **Commit your changes**
-   ```bash
-   git commit -m "feat: add amazing feature"
-   ```
+**Great Bug Reports** tend to have:
 
-   Use conventional commit messages:
-   - `feat:` for new features
-   - `fix:` for bug fixes
-   - `docs:` for documentation changes
-   - `style:` for formatting changes
-   - `refactor:` for code refactoring
-   - `test:` for adding tests
-   - `chore:` for maintenance tasks
+- A quick summary and/or background
+- Steps to reproduce
+    - Be specific!
+    - Give sample code if you can.
+- What you expected would happen
+- What actually happened
+- Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
 
-5. **Push to your fork**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+## License
 
-6. **Create a Pull Request**
-   - Provide a clear description of your changes
-   - Reference any related issues
-   - Wait for review and address feedback
-
-## Project Structure
-
-- `src/components`: Reusable UI components
-- `src/pages`: Main application pages/routes
-- `src/utils`: Helper functions and utilities
-- `src/types`: TypeScript type definitions
-- `src/hooks`: Custom React hooks
-
-## Development Setup
-
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-3. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-4. **Run linter**
-   ```bash
-   npm run lint
-   ```
-
-## Code Style Guidelines
-
-- Use TypeScript for type safety
-- Follow React best practices
-- Use functional components with hooks
-- Keep components small and focused
-- Write self-documenting code
-- Add comments for complex logic
-- Use meaningful variable and function names
-
-## Testing
-
-- Test all new features thoroughly
-- Test on multiple browsers (Chrome, Firefox, Safari, Edge)
-- Test on different screen sizes
-- Ensure offline functionality works
-
-## Design Guidelines
-
-- Follow the existing design system
-- Use the predefined color palette
-- Maintain consistent spacing and typography
-- Ensure responsive design
-- Add smooth transitions and animations
-- Prioritize accessibility
-
-## Questions?
-
-Feel free to create an issue for any questions or concerns.
-
-Thank you for contributing to PDF Perfect! 🎉
+By contributing, you agree that your contributions will be licensed under its MIT License.
