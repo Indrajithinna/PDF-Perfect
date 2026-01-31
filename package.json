@@ -50,7 +50,17 @@
     "type": "git",
     "url": "git+https://github.com/Indrajithinna/PDF-Perfect.git"
   },
-  "keywords": [],
+  "keywords": [
+    "pdf",
+    "pdf-tools",
+    "react",
+    "typescript",
+    "ocr",
+    "pdf-manipulation",
+    "merge-pdf",
+    "split-pdf",
+    "converter"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
