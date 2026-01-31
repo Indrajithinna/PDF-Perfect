@@ -7,11 +7,17 @@ export interface ToolCardProps {
     description: string;
     link: string;
     iconColor: string;
+    badge?: string;
 }
 
-export const ToolCard: React.FC<ToolCardProps> = ({ icon, title, description, link, iconColor }) => {
+export const ToolCard: React.FC<ToolCardProps> = ({ icon, title, description, link, iconColor, badge }) => {
     return (
-        <Link to={link} className="tool-card group block h-full">
+        <Link to={link} className="tool-card group block h-full relative">
+            {badge && (
+                <span className="absolute top-4 right-4 px-2 py-0.5 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs font-bold rounded-full shadow-sm animate-pulse">
+                    {badge}
+                </span>
+            )}
             <div className={`tool-card-icon ${iconColor} bg-opacity-10`}>
                 {React.cloneElement(icon as React.ReactElement, { className: `w-7 h-7 ${iconColor.replace('bg-', 'text-')}` })}
             </div>
