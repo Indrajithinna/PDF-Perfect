@@ -56,7 +56,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           relative border-3 border-dashed rounded-2xl p-12 text-center transition-all duration-500 cursor-pointer overflow-hidden
           ${isDragActive && !isDragReject ? 'border-purple-500 bg-purple-50 scale-105' : 'border-gray-300 bg-gradient-to-br from-gray-50 to-white'}
           ${isDragReject ? 'border-red-500 bg-red-50' : ''}
-          ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:border-purple-400 hover:bg-purple-25 hover:shadow-lg'}
+          ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:border-purple-400 hover:bg-purple-50/50 hover:shadow-xl hover:scale-[1.01]'}
         `}
             >
                 <input {...getInputProps()} />
