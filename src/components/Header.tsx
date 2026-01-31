@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             <nav className="glass-card container mx-auto px-6 py-3 flex items-center justify-between dark:bg-slate-900/80 dark:border-slate-700">
                 {/* Logo */}
                 <Link to="/" className="flex items-center space-x-3 group" title="Return to Home">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center text-white shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300 group-hover:rotate-6 group-hover:scale-110">
                         <FileText className="w-6 h-6" />
                     </div>
                     <div>
@@ -83,25 +83,27 @@ const Header: React.FC = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                {mobileMenuOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 mx-4 p-4 glass-card md:hidden flex flex-col space-y-2 animate-fade-in">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className={`px-4 py-3 rounded-xl font-medium transition-colors ${isActive(link.path)
-                                    ? 'bg-violet-50 text-violet-700'
-                                    : 'text-gray-600 hover:bg-gray-50'
-                                    }`}
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </div>
-                )}
-            </nav>
-        </header>
+                {
+                    mobileMenuOpen && (
+                        <div className="absolute top-full left-0 right-0 mt-2 mx-4 p-4 glass-card md:hidden flex flex-col space-y-2 animate-fade-in">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.path}
+                                    to={link.path}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className={`px-4 py-3 rounded-xl font-medium transition-colors ${isActive(link.path)
+                                        ? 'bg-violet-50 text-violet-700'
+                                        : 'text-gray-600 hover:bg-gray-50'
+                                        }`}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
+                    )
+                }
+            </nav >
+        </header >
     );
 };
 
