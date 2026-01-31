@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { PDFDocument } from 'pdf-lib';
 import { Download, Upload, Trash2, GripVertical } from 'lucide-react';
+import Button from '../components/Button';
 
 interface PDFFile {
     file: File;
@@ -137,23 +138,15 @@ const MergePDF: React.FC = () => {
                         </div>
 
                         <div className="mt-6 flex justify-center">
-                            <button
+                            <Button
                                 onClick={mergePDFs}
                                 disabled={isProcessing || pdfFiles.length < 2}
-                                className="btn-primary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                loading={isProcessing}
+                                variant="primary"
+                                icon={<Download className="w-5 h-5" />}
                             >
-                                {isProcessing ? (
-                                    <>
-                                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                                        <span>Merging...</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <Download className="w-5 h-5" />
-                                        <span>Merge & Download</span>
-                                    </>
-                                )}
-                            </button>
+                                Merge & Download
+                            </Button>
                         </div>
                     </div>
                 )}
@@ -168,7 +161,7 @@ const MergePDF: React.FC = () => {
                     </ol>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
