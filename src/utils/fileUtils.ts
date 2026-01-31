@@ -15,8 +15,9 @@ export const formatFileSize = (bytes: number): string => {
 
 /**
  * Validate file size
- * @param file File to check
- * @param maxSizeMB Maximum size in MB
+ * @param file File object to check
+ * @param maxSizeMB Maximum allowed size in Megabytes
+ * @returns true if file is within limit, false otherwise
  */
 export const validateFileSize = (file: File, maxSizeMB: number): boolean => {
     const maxSizeBytes = maxSizeMB * 1024 * 1024;
