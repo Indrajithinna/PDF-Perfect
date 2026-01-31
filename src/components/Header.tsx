@@ -92,8 +92,8 @@ const Header: React.FC = () => {
                                     to={link.path}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className={`px-4 py-3 rounded-xl font-medium transition-colors ${isActive(link.path)
-                                        ? 'bg-violet-50 text-violet-700'
-                                        : 'text-gray-600 hover:bg-gray-50'
+                                        ? 'bg-violet-50 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300'
+                                        : 'text-gray-600 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-slate-800'
                                         }`}
                                 >
                                     {link.label}

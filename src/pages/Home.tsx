@@ -161,18 +161,18 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-4 py-16 md:py-24">
             {/* Hero Section */}
             <div className="text-center mb-24 max-w-4xl mx-auto animate-fade-in">
-                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/60 border border-violet-100 rounded-full mb-8 backdrop-blur-sm shadow-sm">
-                    <Sparkles className="w-4 h-4 text-violet-600" />
-                    <span className="text-sm font-semibold text-violet-800">v2.0 • New Generation PDF Tools</span>
+                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/60 dark:bg-slate-800/60 border border-violet-100 dark:border-violet-900 rounded-full mb-8 backdrop-blur-sm shadow-sm">
+                    <Sparkles className="w-4 h-4 text-violet-600 dark:text-violet-400" />
+                    <span className="text-sm font-semibold text-violet-800 dark:text-violet-200">v2.0 • New Generation PDF Tools</span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-gray-900">
+                <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-gray-900 dark:text-white">
                     Master Your Documents with <span className="gradient-text">PDF Perfect</span>
                 </h1>
 
-                <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
                     A professional suite of PDF tools that runs entirely in your browser.
-                    <span className="block mt-2 font-medium text-gray-900">Secure, Private, and Offline-Ready.</span>
+                    <span className="block mt-2 font-medium text-gray-900 dark:text-gray-100">Secure, Private, and Offline-Ready.</span>
                 </p>
 
                 {/* Features Grid */}
@@ -180,14 +180,14 @@ const Home: React.FC = () => {
                     {features.map((feature, index) => (
                         <div
                             key={index}
-                            className={`glass-card p-6 flex items-start space-x-4 hover:bg-white transition-colors duration-300 delay-${(index + 1) * 100}`}
+                            className={`glass-card p-6 flex items-start space-x-4 hover:bg-white dark:hover:bg-slate-800 transition-colors duration-300 delay-${(index + 1) * 100}`}
                         >
-                            <div className={`p-3 rounded-xl flex-shrink-0 ${feature.bg}`}>
+                            <div className={`p-3 rounded-xl flex-shrink-0 ${feature.bg} dark:bg-opacity-10`}>
                                 {feature.icon}
                             </div>
                             <div>
-                                <h4 className="font-bold text-gray-900 mb-1">{feature.title}</h4>
-                                <p className="text-sm text-gray-500 leading-snug">{feature.description}</p>
+                                <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{feature.title}</h4>
+                                <p className="text-sm text-gray-500 dark:text-gray-400 leading-snug">{feature.description}</p>
                             </div>
                         </div>
                     ))}
@@ -198,8 +198,8 @@ const Home: React.FC = () => {
             <div className="mb-24">
                 <div className="flex items-center justify-between mb-12">
                     <div>
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Powerful Tools</h2>
-                        <p className="text-gray-500">Everything you need to manage your PDFs</p>
+                        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Powerful Tools</h2>
+                        <p className="text-gray-500 dark:text-gray-400">Everything you need to manage your PDFs</p>
                     </div>
                 </div>
 
@@ -220,7 +220,7 @@ const Home: React.FC = () => {
             <div className="glass-card p-12 text-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-indigo-500"></div>
 
-                <h3 className="text-3xl font-bold text-gray-900 mb-6">Why Professionals Trust PDF Perfect?</h3>
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Why Professionals Trust PDF Perfect?</h3>
 
                 <div className="flex flex-wrap justify-center gap-8 mb-10">
                     {[
@@ -229,14 +229,14 @@ const Home: React.FC = () => {
                         'Works Without Internet',
                         'Open Source transparency'
                     ].map((item, i) => (
-                        <div key={i} className="flex items-center space-x-2 text-gray-700 font-medium">
+                        <div key={i} className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 font-medium">
                             <CheckCircle2 className="w-5 h-5 text-green-500" />
                             <span>{item}</span>
                         </div>
                     ))}
                 </div>
 
-                <div className="inline-flex items-center space-x-2 text-sm text-gray-500 bg-gray-50 px-4 py-2 rounded-lg border border-gray-100">
+                <div className="inline-flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-slate-800/50 px-4 py-2 rounded-lg border border-gray-100 dark:border-slate-700">
                     <Rocket className="w-4 h-4 text-violet-500" />
                     <span>MIT Licensed &bull; Free for personal and commercial use</span>
                 </div>
