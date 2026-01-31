@@ -123,14 +123,16 @@ const Home: React.FC = () => {
             title: 'PDF to Text',
             description: 'Extract raw text content from PDF documents.',
             link: '/pdf-to-text',
-            iconColor: 'bg-gray-600'
+            iconColor: 'bg-gray-600',
+            badge: 'New'
         },
         {
             icon: <ScanText />,
             title: 'OCR PDF',
             description: 'Recognize text in scanned documents and images.',
             link: '/ocr',
-            iconColor: 'bg-yellow-600'
+            iconColor: 'bg-yellow-600',
+            badge: 'Beta'
         }
     ];
 
