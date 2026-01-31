@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Github, Heart, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -25,72 +24,38 @@ const Footer: React.FC = () => {
                     {/* Quick Links */}
                     <div>
                         <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-4 text-lg">Quick Links</h4>
-                        <div className="grid grid-cols-2 gap-2">
-                            <ul className="space-y-2 text-sm">
-                                <li>
-                                    <Link to="/" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Home
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/merge" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Merge PDF
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/split" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Split PDF
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/compress" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Compress PDF
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/convert" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Convert PDF
-                                    </Link>
-                                </li>
-                            </ul>
-                            <ul className="space-y-2 text-sm">
-                                <li>
-                                    <Link to="/ocr" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        OCR PDF
-                                    </Link>
-                                </li>
-                                <li>
-                                    <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Privacy Policy
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Terms
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        About Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://github.com/Indrajithinna/PDF-Perfect/issues" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
-                                        Report Bug
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul className="space-y-3 text-sm">
+                            <li>
+                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
+                                    <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
+                                    <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                                    Terms of Service
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
+                                    <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
+                                    <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                                    Contact
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Indrajithinna/PDF-Perfect/issues" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
+                                    <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                                    Report a Bug
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
                     {/* Connect Section */}
