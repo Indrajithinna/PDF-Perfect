@@ -18,6 +18,18 @@ PDF Perfect has been upgraded to a robust full-stack architecture capable of han
 - **Load Balancing**: NGINX configured for horizontal scaling.
 - **Worker Nodes**: Dedicated microservices for CPU-intensive PDF operations.
 
+## ✨ Features
+
+- **Merge PDF**: Combine multiple files into one.
+- **Split PDF**: Extract specific pages or split documents.
+- **Compress PDF**: Reduce file size while maintaining quality.
+- **Convert to PDF**: Support for Word, Excel, PowerPoint, and Images.
+- **PDF to Images**: Convert PDF pages to high-quality images.
+- **Security**: Password protect and Unlock PDFs.
+- **Edit & Organize**: Add watermarks, page numbers, rotate/delete pages, and edit metadata.
+- **Advanced Tools**: Flatten forms, Extract text, and OCR scanning.
+- **Signature**: Sign PDFs digitally.
+
 ## 🚀 Deployment
 
 ### Prerequisites
