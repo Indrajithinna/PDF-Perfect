@@ -97,7 +97,7 @@ const Footer: React.FC = () => {
                             Made with <Heart className="w-4 h-4 text-rose-500 fill-current animate-pulse" /> for PDF lovers
                         </p>
                         <p className="text-xs text-gray-500 dark:text-gray-500">
-                            © {currentYear} PDF Perfect. All rights reserved.
+                            © {currentYear} PDF Perfect. Made with love.
                         </p>
                     </div>
                 </div>
