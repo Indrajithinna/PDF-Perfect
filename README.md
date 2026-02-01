@@ -90,6 +90,7 @@ If you want to run services individually without Docker (not recommended for ful
    # From root
    npm install
    npm run dev
+   # Access at http://localhost:5173
    ```
 
 ## 🛠️ API Endpoints
