@@ -1,4 +1,4 @@
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
     error?: {
         message: string;
         code?: string;
@@ -11,7 +11,7 @@ export interface JobStatus {
     id: string;
     state: 'active' | 'completed' | 'failed' | 'delayed' | 'waiting';
     progress: number;
-    result?: any;
+    result?: unknown;
     downloadUrl?: string | null;
 }
 

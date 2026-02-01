@@ -20,6 +20,6 @@ export const pdfQueue = new Queue('pdf-processing', {
     }
 });
 
-export const addJob = async (name: string, data: any) => {
+export const addJob = async (name: string, data: Record<string, unknown>) => {
     return await pdfQueue.add(name, data);
 };

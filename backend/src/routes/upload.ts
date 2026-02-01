@@ -10,7 +10,7 @@ export async function uploadRoutes(fastify: FastifyInstance) {
         let pdfFileKey = '';
         let imageFileKey = '';
         let operation = 'process-pdf'; // default
-        let params: any = {};
+        let params: Record<string, unknown> = {};
         const fileId = uuidv4();
 
         for await (const part of parts) {
@@ -30,7 +30,7 @@ export async function uploadRoutes(fastify: FastifyInstance) {
                 } else if (part.fieldname === 'params') {
                     try {
                         params = JSON.parse(part.value as string);
-                    } catch (e) {
+                    } catch (_e) {
                         console.error('Failed to parse params json');
                     }
                 }

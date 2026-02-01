@@ -70,7 +70,7 @@ import { healthRoutes } from './routes/health';
 
 // ... imports
 
-server.register(async function (fastify) {
+server.register(async function () {
     // ... websocket logic
 });
 
