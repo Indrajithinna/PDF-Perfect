@@ -59,6 +59,7 @@ const Header: React.FC = () => {
                     <button
                         onClick={() => setIsDark(!isDark)}
                         className="p-2 rounded-lg text-gray-500 hover:text-violet-600 hover:bg-violet-50 dark:text-gray-400 dark:hover:text-violet-300 dark:hover:bg-slate-800 transition-colors"
+                        aria-label="Toggle dark mode"
                     >
                         {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     </button>
