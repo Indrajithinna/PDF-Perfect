@@ -18,6 +18,14 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 4. Ensure the test suite passes.
 5. Make sure your code lints.
 6. Issue that pull request!
+7. Format your code with Prettier before submitting.
+
+## Code Style
+
+- Use TypeScript for all new code.
+- Functional components with Hooks are preferred for React.
+- Use async/await for asynchronous operations.
+- keep file names consistent (PascalCase for components, camelCase for utilities).
 
 ## Any contributions you make will be under the MIT Software License
 
