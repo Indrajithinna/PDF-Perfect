@@ -163,7 +163,7 @@ const Home: React.FC = () => {
             <div className="text-center mb-24 max-w-4xl mx-auto animate-fade-in">
                 <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/60 dark:bg-slate-800/60 border border-violet-100 dark:border-violet-900 rounded-full mb-8 backdrop-blur-sm shadow-sm">
                     <Sparkles className="w-4 h-4 text-violet-600 dark:text-violet-400" />
-                    <span className="text-sm font-semibold text-violet-800 dark:text-violet-200">v2.0 • New Generation PDF Tools</span>
+                    <span className="text-sm font-semibold text-violet-800 dark:text-violet-200">v2.1 • New Generation PDF Tools</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-gray-900 dark:text-white">
