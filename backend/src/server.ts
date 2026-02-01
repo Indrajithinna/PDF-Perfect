@@ -91,7 +91,7 @@ process.on('SIGTERM', () => closeGracefully('SIGTERM'));
 const start = async () => {
     try {
         await server.listen({ port: config.port, host: '0.0.0.0' });
-        console.log(`Server listening at http://0.0.0.0:${config.port}`);
+        console.log(`[${new Date().toISOString()}] Server listening at http://0.0.0.0:${config.port}`);
     } catch (err) {
         server.log.error(err);
         process.exit(1);
