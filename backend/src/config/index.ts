@@ -17,7 +17,7 @@ const envSchema = z.object({
 
 const env = envSchema.parse(process.env);
 
-export const config = {
+export const config: Config = {
     port: env.PORT,
     redis: {
         host: env.REDIS_HOST,
@@ -31,4 +31,11 @@ export const config = {
         bucket: env.S3_BUCKET,
     },
     jwtSecret: env.JWT_SECRET,
+};
+
+type Config = {
+    port: number;
+    redis: { host: string; port: number };
+    s3: { endpoint: string; region: string; accessKeyId: string; secretAccessKey: string; bucket: string };
+    jwtSecret: string;
 };
