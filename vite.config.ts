@@ -18,5 +18,9 @@ export default defineConfig({
         ws: true
       }
     }
+  },
+  build: {
+    target: 'esnext',
+    outDir: 'dist'
   }
 });
