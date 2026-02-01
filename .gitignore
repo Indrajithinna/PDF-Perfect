@@ -26,3 +26,6 @@ dist-ssr
 .env
 coverage
 *.zip
+*.tsbuildinfo
+temp/
+thumbs.db
