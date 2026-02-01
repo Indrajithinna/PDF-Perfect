@@ -7,9 +7,8 @@ import Button from '../components/Button';
 import FileUploader from '../components/FileUploader';
 
 // Initialize PDF.js worker
-// Using a specific stable version from CDN to ensure compatibility if local import fails
-// or ideally use the one matching package.json
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+const workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrc;
 
 const OCRPDF: React.FC = () => {
     const [pdfFile, setPdfFile] = useState<File | null>(null);
@@ -83,6 +82,7 @@ const OCRPDF: React.FC = () => {
                 canvas.width = viewport.width;
 
                 if (context) {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     await page.render({ canvasContext: context, viewport } as any).promise;
 
                     setStatus(`Recognizing text on page ${i}/${doc.numPages}...`);
@@ -100,9 +100,10 @@ const OCRPDF: React.FC = () => {
 
             setStatus('Completed!');
             setExtractedText(fullText);
-        } catch (error: any) {
+        } catch (error) {
             console.error('Error in OCR:', error);
-            setErrorMsg(error.message || 'An error occurred during OCR processing.');
+            const message = error instanceof Error ? error.message : 'An error occurred during OCR processing.';
+            setErrorMsg(message);
             setStatus('Failed');
         } finally {
             setIsProcessing(false);
