@@ -130,6 +130,7 @@ const MergePDF: React.FC = () => {
                                     <button
                                         onClick={() => removeFile(pdfFile.id)}
                                         className="p-2 hover:bg-red-100 rounded-lg transition-colors"
+                                        aria-label={`Remove ${pdfFile.file.name}`}
                                     >
                                         <Trash2 className="w-5 h-5 text-red-500" />
                                     </button>
