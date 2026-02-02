@@ -18,7 +18,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ icon, title, description, li
                     {badge}
                 </span>
             )}
-            <div className={`tool-card-icon ${iconColor} bg-opacity-10`}>
+            <div className={`tool-card-icon ${iconColor} bg-opacity-10 transition-transform duration-300 group-hover:scale-110`}>
                 {React.cloneElement(icon as React.ReactElement, { className: `w-7 h-7 ${iconColor.replace('bg-', 'text-')}` })}
             </div>
             <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-violet-700 dark:group-hover:text-violet-400 transition-colors">{title}</h3>
