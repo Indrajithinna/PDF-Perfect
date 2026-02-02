@@ -180,7 +180,11 @@ const SplitPDF: React.FC = () => {
                                             min="1"
                                             max={pageCount}
                                             value={startPage}
-                                            onChange={(e) => setStartPage(Math.max(1, Math.min(pageCount, parseInt(e.target.value) || 1)))}
+                                            onChange={(e) => {
+                                                const newStart = Math.max(1, Math.min(pageCount, parseInt(e.target.value) || 1));
+                                                setStartPage(newStart);
+                                                if (endPage < newStart) setEndPage(newStart);
+                                            }}
                                             className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none"
                                         />
                                     </div>
