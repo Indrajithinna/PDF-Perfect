@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { PDFDocument } from 'pdf-lib';
-import { Download, Upload, Trash2, GripVertical } from 'lucide-react';
+import { Download, Upload, Trash2 } from 'lucide-react';
 import Button from '../components/Button';
 
 interface PDFFile {
@@ -120,7 +120,6 @@ const MergePDF: React.FC = () => {
                                     className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-gray-200 hover:border-purple-300 transition-colors"
                                 >
                                     <div className="flex items-center space-x-3">
-                                        <GripVertical className="w-5 h-5 text-gray-400" />
                                         <span className="font-semibold text-purple-600">#{index + 1}</span>
                                         <span className="text-gray-700">{pdfFile.file.name}</span>
                                         <span className="text-sm text-gray-500">
@@ -156,7 +155,7 @@ const MergePDF: React.FC = () => {
                     <h3 className="font-semibold text-gray-800 mb-3">How to use:</h3>
                     <ol className="list-decimal list-inside space-y-2 text-gray-600 text-sm">
                         <li>Upload or drag & drop your PDF files</li>
-                        <li>Arrange them in the desired order (drag to reorder)</li>
+                        <li>Files are merged in the order shown</li>
                         <li>Click "Merge & Download" to combine them</li>
                         <li>Your merged PDF will download automatically</li>
                     </ol>
