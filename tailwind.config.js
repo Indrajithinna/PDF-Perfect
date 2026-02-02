@@ -49,6 +49,7 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'bounce-gentle': 'bounceGentle 2s infinite',
+        'spin-slow': 'spinSlow 3s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -62,6 +63,10 @@ export default {
         bounceGentle: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-5px)' },
+        },
+        spinSlow: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
       },
     },
