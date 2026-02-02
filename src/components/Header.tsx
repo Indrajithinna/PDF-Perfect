@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FileText, Menu, X, Shield, Moon, Sun } from 'lucide-react';
 
+const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/merge', label: 'Merge' },
+    { path: '/split', label: 'Split' },
+    { path: '/compress', label: 'Compress' },
+    { path: '/convert', label: 'Convert' },
+];
+
 const Header: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isDark, setIsDark] = useState(false);
@@ -14,14 +22,6 @@ const Header: React.FC = () => {
             document.documentElement.classList.remove('dark');
         }
     }, [isDark]);
-
-    const navLinks = [
-        { path: '/', label: 'Home' },
-        { path: '/merge', label: 'Merge' },
-        { path: '/split', label: 'Split' },
-        { path: '/compress', label: 'Compress' },
-        { path: '/convert', label: 'Convert' },
-    ];
 
     const isActive = (path: string) => location.pathname === path;
 
