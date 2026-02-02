@@ -120,3 +120,11 @@ export const readFileAsDataURL = (file: File): Promise<string> => {
         reader.readAsDataURL(file);
     });
 };
+
+/**
+ * Get file extension from filename
+ */
+export const getFileExtension = (filename: string): string => {
+    return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+};
+
