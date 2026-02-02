@@ -26,6 +26,16 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 - Functional components with Hooks are preferred for React.
 - Use async/await for asynchronous operations.
 - keep file names consistent (PascalCase for components, camelCase for utilities).
+- Run `npm run lint` before committing to catch errors early.
+
+## Commit Messages
+
+- Use the imperative mood ("Add feature" not "Added feature").
+- Separate subject from body with a blank line.
+- Limit the subject line to 50 characters.
+- Capitalize the subject line.
+- Do not end the subject line with a period.
+- Use the body to explain what and why vs. how.
 
 ## Any contributions you make will be under the MIT Software License
 
