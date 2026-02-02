@@ -51,6 +51,8 @@ const Button: React.FC<ButtonProps> = ({
             onClick={onClick}
             disabled={disabled || loading}
             title={title}
+            aria-label={title || (typeof children === 'string' ? children : 'Button')}
+            aria-disabled={disabled || loading}
             className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyle} ${disabledStyle} ${className}`}
         >
             {loading ? (
