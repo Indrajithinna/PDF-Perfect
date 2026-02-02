@@ -55,6 +55,12 @@ const Footer: React.FC = () => {
                                     Report a Bug
                                 </a>
                             </li>
+                            <li>
+                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center group">
+                                    <span className="w-0 group-hover:w-2 h-0.5 bg-purple-600 dark:bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300"></span>
+                                    Documentation
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
