@@ -145,8 +145,9 @@ const PageNumbers: React.FC = () => {
                                 <label className="block text-sm font-semibold text-gray-700 mb-2">Start Numbering From</label>
                                 <input
                                     type="number"
+                                    min="1"
                                     value={startFrom}
-                                    onChange={(e) => setStartFrom(Number(e.target.value))}
+                                    onChange={(e) => setStartFrom(Math.max(1, Number(e.target.value)))}
                                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-teal-500 outline-none"
                                 />
                                 <p className="text-xs text-gray-500 mt-2">First page will have this number</p>
