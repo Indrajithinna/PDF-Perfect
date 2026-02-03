@@ -14,9 +14,9 @@ const NotFound: React.FC = () => {
             <p className="text-gray-600 text-lg mb-10 max-w-md mx-auto leading-relaxed">
                 Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
             </p>
-            <Link to="/">
+            <Link to="/" aria-label="Return to homepage">
                 <Button variant="primary" icon={<Home className="w-5 h-5" />}>
-                    Back to Home
+                    Return Home
                 </Button>
             </Link>
         </div>
