@@ -3,7 +3,7 @@
 ## High Priority
 - [ ] Add comprehensive unit tests for backend services
 - [ ] Implement user authentication (Auth0 or Supabase)
-- [ ] Add dark mode toggle to frontend
+- [x] Add dark mode toggle to frontend
 
 ## Medium Priority
 - [ ] Optimize PDF processing worker memory usage
