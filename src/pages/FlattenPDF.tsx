@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
-import { Layers, Download, Check } from 'lucide-react';
+import { Layers, Download, CheckCircle2 } from 'lucide-react';
 import { validateFileSize } from '../utils/fileUtils';
 import Button from '../components/Button';
 import FileUploader from '../components/FileUploader';
@@ -81,15 +81,15 @@ const FlattenPDF: React.FC = () => {
                             <h4 className="font-bold text-slate-800 mb-4">What happens when you flatten?</h4>
                             <ul className="space-y-3">
                                 <li className="flex items-center gap-3 text-sm text-slate-700">
-                                    <div className="bg-green-100 p-1 rounded-full"><Check className="w-3 h-3 text-green-600" /></div>
+                                    <div className="bg-green-100 p-1 rounded-full"><CheckCircle2 className="w-3 h-3 text-green-600" /></div>
                                     Interactive form fields become permanent static text
                                 </li>
                                 <li className="flex items-center gap-3 text-sm text-slate-700">
-                                    <div className="bg-green-100 p-1 rounded-full"><Check className="w-3 h-3 text-green-600" /></div>
+                                    <div className="bg-green-100 p-1 rounded-full"><CheckCircle2 className="w-3 h-3 text-green-600" /></div>
                                     Annotations and comments are merged into the page content
                                 </li>
                                 <li className="flex items-center gap-3 text-sm text-slate-700">
-                                    <div className="bg-green-100 p-1 rounded-full"><Check className="w-3 h-3 text-green-600" /></div>
+                                    <div className="bg-green-100 p-1 rounded-full"><CheckCircle2 className="w-3 h-3 text-green-600" /></div>
                                     Document becomes read-only and prevents modification
                                 </li>
                             </ul>
