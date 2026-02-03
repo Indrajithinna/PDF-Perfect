@@ -4,12 +4,14 @@ interface LoadingProps {
     size?: 'sm' | 'md' | 'lg';
     text?: string;
     fullScreen?: boolean;
+    className?: string;
 }
 
 const Loading: React.FC<LoadingProps> = ({
     size = 'md',
     text = 'Loading...',
-    fullScreen = false
+    fullScreen = false,
+    className = ''
 }) => {
     const sizeClasses = {
         sm: 'w-8 h-8',
@@ -24,7 +26,7 @@ const Loading: React.FC<LoadingProps> = ({
     };
 
     const content = (
-        <div className="flex flex-col items-center justify-center gap-4">
+        <div className={`flex flex-col items-center justify-center gap-4 ${className}`}>
             <div className="relative">
                 <div className={`${sizeClasses[size]} rounded-full border-4 border-purple-200 border-t-purple-600 animate-spin`}></div>
                 <div className="absolute inset-0 flex items-center justify-center">
