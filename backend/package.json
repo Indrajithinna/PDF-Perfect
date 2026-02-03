@@ -1,7 +1,7 @@
 {
     "name": "pdf-perfect-backend",
     "version": "1.0.0",
-    "description": "",
+    "description": "High-performance backend for PDF Perfect using Fastify",
     "main": "dist/server.js",
     "scripts": {
         "build": "tsc",
@@ -9,7 +9,13 @@
         "dev": "ts-node src/server.ts",
         "watch": "ts-node-dev --respawn --transpile-only src/server.ts"
     },
-    "keywords": [],
+    "keywords": [
+        "fastify",
+        "nodejs",
+        "pdf",
+        "backend",
+        "typescript"
+    ],
     "author": "",
     "license": "ISC",
     "dependencies": {
